@@ -5,7 +5,7 @@ Proyecto Final realizado en PSEINT para la cursada de la facultad regional técn
 ## Integrantes del Equipo
 
 - Omar Ignacio Velazquez
-- Nombre completo del miembro del equipo 2
+- Juan Marcos Orellana
 - Nombre completo del miembro del equipo 3
 - ...
 
@@ -21,7 +21,7 @@ Proyecto Final realizado en PSEINT para la cursada de la facultad regional técn
 
 ## Uso
 
-Instrucciones sobre cómo utilizar el programa, incluidos ejemplos de comandos o casos de uso típicos.
+Instrucciones sobre cómo utilizar el programa (PseInt), incluidos ejemplos de comandos o casos de uso típicos.
 
 ## Contribución
 
@@ -37,7 +37,7 @@ Especificar la licencia bajo la cual se distribuye el proyecto.
 
 ## Contacto
 
-Proporcionar información de contacto para el equipo de desarrollo, como direcciones de correo electrónico o enlaces a perfiles en redes sociales.
+solucion202utn@gmail.com
 
 ## Agradecimientos
 
