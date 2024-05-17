@@ -58,7 +58,7 @@ Proceso MENU
 			9:
 				EligeSalir<-Verdadero;
 			De Otro Modo:
-				Escribir 'eleccionción  no válida!';
+				Escribir 'Eleccion no válida!';
 		FinSegun
 	Hasta que EligeSalir
 FinProceso
@@ -160,7 +160,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 			4:
 				EligeSalir<-Verdadero;
 			De Otro Modo:
-				Escribir 'eleccionción  no válida!';
+				Escribir 'Eleccion no válida!';
 		FinSegun
 	Hasta que EligeSalir
 FinSubProceso
@@ -455,7 +455,7 @@ SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja 
 					plantarse<-Verdadero;
 					turnoDelCrupier(plata , apuesta, baraja,puntosJugador,puntosCrupier, manoJugador, manoCrupier);
 				De Otro Modo:
-					Escribir 'eleccionción  no válida!';
+					Escribir 'Eleccion no válida!';
 			FinSegun
 
 	FinMientras
