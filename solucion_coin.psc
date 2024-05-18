@@ -24,7 +24,7 @@ Proceso MENU
 	
 	Repetir
 		Escribir ' ';
-		Escribir 'Elija una opciÃ³n:';
+		Escribir 'Elija una opción:';
 		Escribir '  1 - BlackJack';
 		Escribir '  2 - Juego de la ruleta';
 		Escribir '  3 - Opcion 3';
@@ -44,7 +44,7 @@ Proceso MENU
 			1: 
 				menuBlackJack(plata );
 			2: 
-				Ruleta(plata)';
+				Ruleta(plata);
 			3: 
 				Escribir 'Funcion 3';
 			4: Escribir'Funcion 4';
@@ -58,7 +58,7 @@ Proceso MENU
 			9:
 				EligeSalir<-Verdadero;
 			De Otro Modo:
-				Escribir 'Eleccion no vÃ¡lida!';
+				Escribir 'Eleccion no válida!';
 		FinSegun
 	Hasta que EligeSalir
 FinProceso
@@ -93,7 +93,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 	Escribir "|(\/)|  | /\ |  | /\ |  | &  |    ","|  |  /  _ \__  \   / __ | |  |/    \  / ___\            ";
 	Escribir "| \/ |  | \/ |  |(__)|  |&|& |    ","|  |_(  <_> ) __ \_/ /_/ | |  |   |  \/ /_/  >           ";
 	Escribir "|   A|  |   A|  | /\A|  | | A|    ","|____/\____(____  /\____ | |__|___|  /\___  / /\  /\  /\ ";
-	Escribir "`----`  `----Â´  `----Â´  `----Â´    ","                \/      \/         \//_____/  \/  \/  \/ ";
+	Escribir "`----`  `----´  `----´  `----´    ","                \/      \/         \//_____/  \/  \/  \/ ";
 	
 
 	Esperar 2 Segundos;
@@ -123,14 +123,14 @@ SubProceso menuBlackJack( plata Por Referencia)
 	
 	Repetir
 		Escribir ' ';
-		Escribir 'Elija una opciÃ³n:';
+		Escribir 'Elija una opción:';
 		Escribir '  1 - Jugar';
 		Escribir '  2 - Ingresar Dinero';
 		Escribir '  3 - Consultar Saldo';
 		Escribir '  4 - Salir';
 		Escribir ' ';
 		
-		Escribir Sin Saltar'Seleccione una opciÃ³n ---';
+		Escribir Sin Saltar'Seleccione una opción ---';
 		Leer eleccion;
 		Limpiar Pantalla;
 		
@@ -160,7 +160,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 			4:
 				EligeSalir<-Verdadero;
 			De Otro Modo:
-				Escribir 'Eleccion no vÃ¡lida!';
+				Escribir 'Eleccion no válida!';
 		FinSegun
 	Hasta que EligeSalir
 FinSubProceso
@@ -276,7 +276,7 @@ SubProceso cartaRetornada <- tomarCarta(baraja por referencia)
 			
 			cartaRetornada <- baraja[azarValor,azarTipo];
 			
-			// marcamos la carta que sale como leÃ­da para que no se repita
+			// marcamos la carta que sale como leída para que no se repita
 			baraja[azarValor,azarTipo] <- Concatenar(Subcadena(cartaRetornada,0,1),"F");
 		SiNo
 			bandera <- falso;
@@ -424,12 +424,12 @@ SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja 
 
 			Escribir ' DINERO DISPONIBLE : $', plata;
 			Escribir ' ';
-			Escribir 'Elija una opciÃ³n:';
+			Escribir 'Elija una opción:';
 			
 			Escribir '  1 - Pedir carta';
 			Escribir '  2 - Plantarse';
 			
-			Escribir Sin Saltar'Seleccione una opciÃ³n ---';
+			Escribir Sin Saltar'Seleccione una opción ---';
 			Leer eleccion;
 			Limpiar Pantalla;
 			mostrarCartasSobreLaMesaDelJugador(manoJugador, puntosJugador);
@@ -455,7 +455,7 @@ SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja 
 					plantarse<-Verdadero;
 					turnoDelCrupier(plata , apuesta, baraja,puntosJugador,puntosCrupier, manoJugador, manoCrupier);
 				De Otro Modo:
-					Escribir 'Eleccion no vÃ¡lida!';
+					Escribir 'Eleccion no válida!';
 			FinSegun
 
 	FinMientras
@@ -617,17 +617,17 @@ SubProceso Ruleta (plata Por Referencia)
 	Escribir "///// Te contamos las reglas antes de comenzar /////";
 	Escribir "";
 	Escribir "---- Apuesta simple ----";
-	Escribir "Se trata de apostar a un solo nÃºmero.";
+	Escribir "Se trata de apostar a un solo número.";
 	Escribir "La ganancia en esta apuesta es, lo apostado por 35!";
 	Escribir "";
 	Escribir "---- Apuesta por color ----";
-	Escribir "Se apuesta al color del nÃºmero ganador, si serÃ¡ rojo o negro.";
-	Escribir "Con esta apuesta se estÃ¡ jugando a 18 nÃºmeros ya que en la ruleta hay 18 nÃºmeros rojos y 18 nÃºmeros negros.";
+	Escribir "Se apuesta al color del número ganador, si será rojo o negro.";
+	Escribir "Con esta apuesta se está jugando a 18 números ya que en la ruleta hay 18 números rojos y 18 números negros.";
 	Escribir "La ganancia en esta apuesta es la suma de lo apostado";
 	Escribir "";
 	Escribir "---- Apuesta por docena ----";
-	Escribir "Se trata de apostar en que docena estarÃ¡ el nÃºmero ganador.";
-	Escribir "El tapete se divide en 3 docenas, cada una de ellas abarca 12 nÃºmeros, por tanto al apostar por una docena se juega a 12 nÃºmeros.";
+	Escribir "Se trata de apostar en que docena estará el número ganador.";
+	Escribir "El tapete se divide en 3 docenas, cada una de ellas abarca 12 números, por tanto al apostar por una docena se juega a 12 números.";
 	Escribir "La ganancia en esta apuesta es el doble de lo apostado";
 	
 	// Inicializar variables
@@ -641,7 +641,7 @@ SubProceso Ruleta (plata Por Referencia)
 	// Bucle principal del juego
 	Repetir
 		
-		Escribir "MenÃº de recomendaciones";
+		Escribir "Menú de recomendaciones";
 		Escribir "   1. Apuesta simple";
 		Escribir "   2. Apuesta por color";
 		Escribir "   3. Apuesta por docena";
@@ -677,7 +677,7 @@ SubProceso Ruleta (plata Por Referencia)
 					Escribir "Ingrese el numero que desea apostar entre 1 y 36: ";
 					Leer numero_apostado;
 					Si numero_apostado == numero_aleatorio Entonces
-						Escribir "Usted ganÃ³!!!";
+						Escribir "Usted ganó!!!";
 						plata <- plata + (plata_apostado * 35);
 						Escribir "Usted tiene ahora de plata: ", plata;
 						Escribir "";
@@ -756,7 +756,7 @@ SubProceso Ruleta (plata Por Referencia)
 							Si numero_aleatorio <= 12 Entonces
 								Escribir "Salio el numero ", numero_aleatorio;
 								Escribir "";
-								Escribir "Usted ganÃ³!!";
+								Escribir "Usted ganó!!";
 								plata <- (plata + (plata_apostado * 2));
 								Escribir "";
 								Escribir "Presione cualquier tecla";
@@ -783,7 +783,7 @@ SubProceso Ruleta (plata Por Referencia)
 							Si numero_aleatorio >= 13 & numero_aleatorio <= 24 Entonces
 								Escribir "Salio el numero ", numero_aleatorio;
 								Escribir "";
-								Escribir "Usted ganÃ³!!";
+								Escribir "Usted ganó!!";
 								plata <- (plata + (plata_apostado * 2));
 								Escribir "";
 								Escribir "Presione cualquier tecla";
@@ -810,7 +810,7 @@ SubProceso Ruleta (plata Por Referencia)
 							Si numero_aleatorio >= 25 & numero_aleatorio <= 36 Entonces
 								Escribir "Salio el numero ", numero_aleatorio;
 								Escribir "";
-								Escribir "Usted ganÃ³!!";
+								Escribir "Usted ganó!!";
 								plata <- (plata + (plata_apostado * 2));
 								Escribir "";
 								Escribir "Presione cualquier tecla";
