@@ -2,7 +2,7 @@ Proceso MENU
 	Definir EligeSalir Como Logico;
 	Definir eleccion Como Numeros;
 	definir plata Como Real;
-	plata <- 0;
+	plata <- 0; //Chicos creo que en el la sección MENU deberiamos pedir ingreso de plata inicial
 	
 	Escribir "                     /$$                     /$$                                               /$$          ";
 	Escribir "                    | $$                    |__/                                              |__/          ";
@@ -24,11 +24,11 @@ Proceso MENU
 	
 	Repetir
 		Escribir ' ';
-		Escribir 'Elija una opciÃ³n:';
+		Escribir 'Elija una opción:';
 		Escribir '  1 - BlackJack';
 		Escribir '  2 - Juego de la ruleta';
 		Escribir '  3 - Opcion 3';
-		Escribir '  4 - Opcion 4';
+		Escribir '  4 - Acertijo';
 		Escribir '  5 - Opcion 4';
 		Escribir '  6 - Opcion 5';
 		Escribir '  7 - Opcion 6';
@@ -44,11 +44,13 @@ Proceso MENU
 			1: 
 				menuBlackJack(plata );
 			2: 
-				Ruleta(plata)';
+				Ruleta(plata);
 			3: 
 				Escribir 'Funcion 3';
-			4: Escribir'Funcion 4';
-			5: Escribir 'Funcion 5';
+			4: 
+				acertijo(plata);
+			5: 
+				Escribir 'Funcion 5';
 			6: 
 				Escribir 'Funcion 6';
 			7: 
@@ -58,7 +60,7 @@ Proceso MENU
 			9:
 				EligeSalir<-Verdadero;
 			De Otro Modo:
-				Escribir 'Eleccion no vÃ¡lida!';
+				Escribir 'Eleccion no válida!';
 		FinSegun
 	Hasta que EligeSalir
 FinProceso
@@ -93,7 +95,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 	Escribir "|(\/)|  | /\ |  | /\ |  | &  |    ","|  |  /  _ \__  \   / __ | |  |/    \  / ___\            ";
 	Escribir "| \/ |  | \/ |  |(__)|  |&|& |    ","|  |_(  <_> ) __ \_/ /_/ | |  |   |  \/ /_/  >           ";
 	Escribir "|   A|  |   A|  | /\A|  | | A|    ","|____/\____(____  /\____ | |__|___|  /\___  / /\  /\  /\ ";
-	Escribir "`----`  `----Â´  `----Â´  `----Â´    ","                \/      \/         \//_____/  \/  \/  \/ ";
+	Escribir "`----`  `----´  `----´  `----´    ","                \/      \/         \//_____/  \/  \/  \/ ";
 	
 
 	Esperar 2 Segundos;
@@ -123,14 +125,14 @@ SubProceso menuBlackJack( plata Por Referencia)
 	
 	Repetir
 		Escribir ' ';
-		Escribir 'Elija una opciÃ³n:';
+		Escribir 'Elija una opción:';
 		Escribir '  1 - Jugar';
 		Escribir '  2 - Ingresar Dinero';
 		Escribir '  3 - Consultar Saldo';
 		Escribir '  4 - Salir';
 		Escribir ' ';
 		
-		Escribir Sin Saltar'Seleccione una opciÃ³n ---';
+		Escribir Sin Saltar'Seleccione una opción ---';
 		Leer eleccion;
 		Limpiar Pantalla;
 		
@@ -160,7 +162,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 			4:
 				EligeSalir<-Verdadero;
 			De Otro Modo:
-				Escribir 'Eleccion no vÃ¡lida!';
+				Escribir 'Eleccion no válida!';
 		FinSegun
 	Hasta que EligeSalir
 FinSubProceso
@@ -276,7 +278,7 @@ SubProceso cartaRetornada <- tomarCarta(baraja por referencia)
 			
 			cartaRetornada <- baraja[azarValor,azarTipo];
 			
-			// marcamos la carta que sale como leÃ­da para que no se repita
+			// marcamos la carta que sale como leída para que no se repita
 			baraja[azarValor,azarTipo] <- Concatenar(Subcadena(cartaRetornada,0,1),"F");
 		SiNo
 			bandera <- falso;
@@ -296,7 +298,7 @@ SubProceso apostar(plata Por Referencia , baraja Por Referencia)
 		Escribir "Cuanto dinero desea apostar : $";
 		leer apuesta;
 		Limpiar Pantalla;
-		si apuesta> plata Entonces
+		si apuesta > plata Entonces
 			Escribir "La apuesta que estas ingresando supera a tu dinero actual -.-*";
 			Escribir "Presione una tecla para volver a intentar.";
 			Esperar Tecla;
@@ -424,12 +426,12 @@ SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja 
 
 			Escribir ' DINERO DISPONIBLE : $', plata;
 			Escribir ' ';
-			Escribir 'Elija una opciÃ³n:';
+			Escribir 'Elija una opción:';
 			
 			Escribir '  1 - Pedir carta';
 			Escribir '  2 - Plantarse';
 			
-			Escribir Sin Saltar'Seleccione una opciÃ³n ---';
+			Escribir Sin Saltar'Seleccione una opción ---';
 			Leer eleccion;
 			Limpiar Pantalla;
 			mostrarCartasSobreLaMesaDelJugador(manoJugador, puntosJugador);
@@ -455,7 +457,7 @@ SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja 
 					plantarse<-Verdadero;
 					turnoDelCrupier(plata , apuesta, baraja,puntosJugador,puntosCrupier, manoJugador, manoCrupier);
 				De Otro Modo:
-					Escribir 'Eleccion no vÃ¡lida!';
+					Escribir 'Eleccion no válida!';
 			FinSegun
 
 	FinMientras
@@ -617,17 +619,17 @@ SubProceso Ruleta (plata Por Referencia)
 	Escribir "///// Te contamos las reglas antes de comenzar /////";
 	Escribir "";
 	Escribir "---- Apuesta simple ----";
-	Escribir "Se trata de apostar a un solo nÃºmero.";
+	Escribir "Se trata de apostar a un solo número.";
 	Escribir "La ganancia en esta apuesta es, lo apostado por 35!";
 	Escribir "";
 	Escribir "---- Apuesta por color ----";
-	Escribir "Se apuesta al color del nÃºmero ganador, si serÃ¡ rojo o negro.";
-	Escribir "Con esta apuesta se estÃ¡ jugando a 18 nÃºmeros ya que en la ruleta hay 18 nÃºmeros rojos y 18 nÃºmeros negros.";
+	Escribir "Se apuesta al color del número ganador, si será rojo o negro.";
+	Escribir "Con esta apuesta se está jugando a 18 números ya que en la ruleta hay 18 números rojos y 18 números negros.";
 	Escribir "La ganancia en esta apuesta es la suma de lo apostado";
 	Escribir "";
 	Escribir "---- Apuesta por docena ----";
-	Escribir "Se trata de apostar en que docena estarÃ¡ el nÃºmero ganador.";
-	Escribir "El tapete se divide en 3 docenas, cada una de ellas abarca 12 nÃºmeros, por tanto al apostar por una docena se juega a 12 nÃºmeros.";
+	Escribir "Se trata de apostar en que docena estará el número ganador.";
+	Escribir "El tapete se divide en 3 docenas, cada una de ellas abarca 12 números, por tanto al apostar por una docena se juega a 12 números.";
 	Escribir "La ganancia en esta apuesta es el doble de lo apostado";
 	
 	// Inicializar variables
@@ -641,7 +643,7 @@ SubProceso Ruleta (plata Por Referencia)
 	// Bucle principal del juego
 	Repetir
 		
-		Escribir "MenÃº de recomendaciones";
+		Escribir "Menú de recomendaciones";
 		Escribir "   1. Apuesta simple";
 		Escribir "   2. Apuesta por color";
 		Escribir "   3. Apuesta por docena";
@@ -677,7 +679,7 @@ SubProceso Ruleta (plata Por Referencia)
 					Escribir "Ingrese el numero que desea apostar entre 1 y 36: ";
 					Leer numero_apostado;
 					Si numero_apostado == numero_aleatorio Entonces
-						Escribir "Usted ganÃ³!!!";
+						Escribir "Usted ganó!!!";
 						plata <- plata + (plata_apostado * 35);
 						Escribir "Usted tiene ahora de plata: ", plata;
 						Escribir "";
@@ -756,7 +758,7 @@ SubProceso Ruleta (plata Por Referencia)
 							Si numero_aleatorio <= 12 Entonces
 								Escribir "Salio el numero ", numero_aleatorio;
 								Escribir "";
-								Escribir "Usted ganÃ³!!";
+								Escribir "Usted ganó!!";
 								plata <- (plata + (plata_apostado * 2));
 								Escribir "";
 								Escribir "Presione cualquier tecla";
@@ -783,7 +785,7 @@ SubProceso Ruleta (plata Por Referencia)
 							Si numero_aleatorio >= 13 & numero_aleatorio <= 24 Entonces
 								Escribir "Salio el numero ", numero_aleatorio;
 								Escribir "";
-								Escribir "Usted ganÃ³!!";
+								Escribir "Usted ganó!!";
 								plata <- (plata + (plata_apostado * 2));
 								Escribir "";
 								Escribir "Presione cualquier tecla";
@@ -810,7 +812,7 @@ SubProceso Ruleta (plata Por Referencia)
 							Si numero_aleatorio >= 25 & numero_aleatorio <= 36 Entonces
 								Escribir "Salio el numero ", numero_aleatorio;
 								Escribir "";
-								Escribir "Usted ganÃ³!!";
+								Escribir "Usted ganó!!";
 								plata <- (plata + (plata_apostado * 2));
 								Escribir "";
 								Escribir "Presione cualquier tecla";
@@ -858,6 +860,649 @@ SubProceso Ruleta (plata Por Referencia)
 	
 FinSubProceso
 
+//######################## ..............::::: INICIO DE ACERTIJOS ::::::.............######################################
+SubProceso acertijo(plata Por Referencia)
+	Escribir "";
+	Escribir "                                             ","?????????????????????";
+	Escribir "                                            ","????????  ___  ?????????";
+	Escribir "                                           ","????????  ?????  ?????????";
+	Esperar 1 Segundos;
+	Escribir "                                          ","???????????????  ???????????";
+	Escribir "                                          ","??????????????  ????????????";
+	Escribir "                                          ","?????????????  ?????????????";
+	Escribir "                                          ","?????????????__?????????????";
+	Esperar 1 Segundos;
+	Escribir "                                        ","???????????????__???????????????";
+	Escribir "                                        ","?????????????????????????????????";
+	Esperar 1 Segundos;
+	Escribir "                                       ","  1   ______         _______    1";
+	Escribir "                                       ","  1  /     ? \______/    ?  \   1";
+	Escribir "                                       ","|||||      ? ? _____    ? ?  |||||";
+	Escribir "                                       ","  1  \_______/  / \  \______/    1";
+	Esperar 1 Segundos;
+	Escribir "                                       ","  1             - -             1";
+	Escribir "                                       ","   \        \___________       /";
+	Escribir "                                       ","     \______           ______/";
+	Escribir "                                       ","            \_________/";
+	Escribir "";
+	Esperar 2 Segundos;
+	Escribir "XXXXXXXXXXX","  XXXXXXXXXXX","  XXXXXXXXX","  XXXXXXXXXX  ","  XXXXXXXXX","  XXXXXXXXXXX","  XXXXXXXXXXX","  XXXXXXXXXXXX","  XXXXXXXXXXX";
+	Escribir "XXX     XXX","  XXX     XXX","  XXX      ","  XXX     XXX ","  XXX      ","      XXX    ","      XXX    ","       XXX    ","  XXX     XXX";
+	Escribir "XXX     XXX","  XXX        ","  XXX      ","  XXX     XXX ","  XXX      ","      XXX    ","      XXX    ","       XXX    ","  XXX     XXX";
+	Escribir "XXXXXXXXXXX","  XXX        ","  XXXXXXXXX","  XXXXXXXXXX  ","  XXXXXXXXX","      XXX    ","      XXX    ","       XXX    ","  XXX     XXX";
+	Escribir "XXX     XXX","  XXX        ","  XXX      ","  XXX     XX  ","  XXX      ","      XXX    ","      XXX    ","       XXX    ","  XXX     XXX";
+	Escribir "XXX     XXX","  XXX     XXX","  XXX      ","  XXX     XXX ","  XXX      ","      XXX    ","      XXX    ","  XXX  XXX    ","  XXX     XXX";
+	Escribir "XXX     XXX","  XXXXXXXXXXX","  XXXXXXXXX","  XXX     XXX ","  XXXXXXXXX","      XXX    ","  XXXXXXXXXXX","  XXXxxXXX    ","  XXXXXXXXXXX";
+	Escribir "";
+	Escribir "                                 |***************************************************|";
+	Escribir "                                 |***      PRESIONE UNA TECLA PARA COMENZAR       ***|"; 
+	Escribir "                                 |***************************************************|";
+	Esperar Tecla;
+	Borrar Pantalla;
+	Definir plata_ingresada Como Real;
+	Escribir "Ingrese la cantidad de plata deseada (cantidad mínima para este juego: 100 de plata): ";
+	Leer plata_ingresada;
+	Si plata_ingresada < 100 Entonces 
+		Repetir
+			Escribir "Debe digitar un monto superior a 99";
+			Escribir "Ingrese la cantidad de plata deseada: ";
+			Leer plata_ingresada;
+		Hasta Que plata_ingresada > 1
+	FinSi
+	plata_ingresada <- plata_ingresada + plata;
+	Definir opcion_apuesta Como Real;
+	opcion_apuesta <- apuesta_acertijo(plata_ingresada);
+	Definir parte1 Como Entero;
+	parte1 <- 0;
+	parte_1(parte1);
+	Definir resultado1, resultado2, resultado3, resultado4 Como Entero;
+	resultado1 <- acertijo_1(parte1);
+	resultado2 <- acertijo_2(parte1);
+	resultado3 <- acertijo_3(parte1);
+	resultado4 <- acertijo_4(parte1);
+	Definir parte2 Como Entero;
+	parte2 <- 0;
+	parte_2(parte2);
+	Definir resultadoParteUno, resultadoParteDos, resultadoTotal Como Entero;
+	resultadoParteUno <- resultado1 + resultado2 + resultado3 + resultado4; 
+	resultadoParteDos <- acertijos_parte_2(parte2);
+	resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos, opcion_apuesta, plata_ingresada);
+	Escribir "";
+	Escribir "Presiona una Tecla para volver al MENU DE SOLUCION COIN";
+	Esperar Tecla;
+	Borrar Pantalla;
+FinSubProceso
+SubProceso opcion_apuesta <- apuesta_acertijo(plata_ingresada)
+	Definir opcion_apuesta Como Real;
+	Escribir "                                 |***************************************************|";
+	Escribir "                                 |***                   APUESTA                   ***|"; 
+	Escribir "                                 |***************************************************|";
+	Escribir "";
+	Escribir "El juego se divide en 2 partes";
+	Escribir "";
+	Escribir "Porcentajes de ganancia/perdida: ";
+	Escribir "";
+	Escribir "100% SI SE ACIERTAN: ";
+	Escribir "      TODOS LOS ACERTIJOS";
+	Escribir "";
+	Escribir "30% SI SE ACIERTAN: "; 
+	Escribir "      3 DE LA PRIMERA PARTE Y 5 DE LA SEGUNDA PARTE";
+	Escribir "      4 DE LA PRIMERA PARTE Y 5 DE LA SEGUNDA PARTE"; 
+	Escribir "      3 DE LA PRIMERA PARTE Y 6 DE LA SEGUNDA PARTE";
+	Escribir "";
+	Escribir "El monto mínimo para apostar es 100 de plata";
+	Escribir "";
+	Escribir Sin Saltar "Ingrese el monto que desea Apostar: ";
+	Leer opcion_apuesta;
+	Mientras opcion_apuesta > plata_ingresada o opcion_apuesta < 100 Hacer
+		Escribir "Monto ingresado inválido";
+		Escribir "";
+		Escribir Sin Saltar "Debe ingresar más de 100 de plata y menos del valor de plata ingresado con anterioridad: ";
+		Escribir "";
+		Leer opcion_apuesta;
+	FinMientras
+	Escribir "";
+	Escribir "Usted apostará ", opcion_apuesta, " de plata";
+	Escribir "";
+	Escribir "                                           PRESIONE UNA TECLA PARA CONTINUAR";
+	Esperar Tecla;
+	Borrar Pantalla;
+FinSubProceso
+//######################## ..............:::::INICIO PARTE 1 ACERTIJO::::::.............######################################
+SubProceso parte_1(parte1)
+	Escribir "                                 |***************************************************|";
+	Escribir "                                 |***     QUE     COMIENCE      EL     JUEGO      ***|"; 
+	Escribir "                                 |***************************************************|";
+	Esperar 3 Segundos;
+	Borrar Pantalla;
+FinSubProceso
+SubProceso resultado1 <- acertijo_1(parte1)
+	Definir a, s Como Entero;
+	Definir opcion Como Caracter;
+	Definir resultado1 Como Entero;
+	Escribir "";
+	Escribir "                             ACERTIJO 1";
+	Escribir "";
+	Escribir "1. Me rascan continuamente de forma muy placentera, mi voz es muy bien timbrada y mi cuerpo de madera.";
+	Escribir "";
+	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
+	Escribir "";
+	a <- azar(3);
+	Segun a Hacer
+		0: 
+			Escribir "1. GUITARRA";
+			Escribir "2. GAITA";
+			Escribir "3. BANDONEON";
+		1:
+			Escribir "1. GAITA";
+			Escribir "2. GUITARRA";
+			Escribir "3. BANDONEON";
+		2:
+			Escribir "1. BANDONEON";
+			Escribir "2. GUITARRA";
+			Escribir "3. GAITA";
+	FinSegun
+	s <- 2;
+	Mientras s>=0 Hacer
+		Si s > 2 Entonces
+		FinSi
+		Esperar 1 Segundos;
+		s <- s - 1;
+	FinMientras
+	Borrar Pantalla;
+	Escribir "";
+	Escribir "                                 ATENCIÓN!!!";
+	Escribir "DEBES ESCRIBIR LA PALABRA CORRECTA CON EXACTITUD, EN MAYUSCULAS Y SIN TILDES";
+	Escribir "";
+	Leer opcion;
+	Borrar Pantalla;
+	Esperar 1 segundo;
+	resultado1 <- respuesta1(opcion);
+	Esperar 2 segundos;
+	Borrar Pantalla;
+FinSubProceso
+SubProceso resultado1 <- respuesta1(opcion)
+	Definir resultado1 Como Entero;
+	resultado1 <- 0;
+	Si opcion = "GUITARRA" Entonces
+		Escribir "";
+		Escribir "CORRECTO";
+		resultado1 <- resultado1 + 1;
+	SiNo
+		Si opcion = "GAITA" o opcion = "BANDONEON" Entonces
+			Escribir "";
+			Escribir "INCORRECTO"; 
+		SiNo
+			Escribir "";
+			Escribir "¡¡¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayúsculas y sin tilde la palabra correcta.";
+		FinSi
+	FinSi
+FinSubProceso
+SubProceso resultado2 <- acertijo_2(parte1)
+	Definir a, s Como Entero;
+	Definir opcion Como Caracter;
+	Definir resultado2 Como Entero;
+	Escribir "";
+	Escribir "                             ACERTIJO 2";
+	Escribir "";
+	Escribir "2. Choco me dice la gente, late mi corazón. El que no sepa mi nombre, es un gran tontorrón.";
+	Escribir "";
+	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
+	Escribir "";
+	a <- azar(3);
+	Segun a Hacer
+		0: 
+			Escribir "1. CHOCOTORTA";
+			Escribir "2. CHOCOLATE";
+			Escribir "3. CHOCOLATADA";
+		1:
+			Escribir "1. CHOCOLATE";
+			Escribir "2. CHOCOTOROTA";
+			Escribir "3. CHOCOLATADA";
+		2:
+			Escribir "1. CHOCOLATADA";
+			Escribir "2. CHOCOTORTA";
+			Escribir "3. CHOCOLATE";
+	FinSegun
+	s <- 2;
+	Mientras s>=0 Hacer
+		Si s > 2 Entonces
+		FinSi
+		Esperar 1 Segundos;
+		s <- s - 1;
+	FinMientras
+	Borrar Pantalla;
+	Escribir "";
+	Escribir "                                 ATENCIÓN!!!";
+	Escribir "DEBES ESCRIBIR LA PALABRA CORRECTA CON EXACTITUD, EN MAYUSCULAS Y SIN TILDES";
+	Escribir "";
+	Leer opcion;
+	Borrar Pantalla;
+	Esperar 1 segundo;
+	resultado2 <- respuesta2(opcion);
+	Esperar 2 segundos;
+	Borrar Pantalla;
+FinSubProceso
+SubProceso resultado2 <- respuesta2(opcion)
+	Definir resultado2 Como Entero;
+	resultado2 <- 0;
+	Si opcion = "CHOCOLATE" Entonces
+		Escribir "";
+		Escribir "CORRECTO";
+		resultado2 <- resultado2 + 1;
+	SiNo
+		Si opcion = "CHOCOTORTA" o opcion = "CHOCOLATADA" Entonces
+			Escribir "";
+			Escribir "INCORRECTO"; 
+		SiNo
+			Escribir "";
+			Escribir "¡¡¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayúsculas y sin tilde la palabra correcta.";
+		FinSi
+	FinSi
+FinSubProceso
+SubProceso resultado3 <- acertijo_3(parte1)
+	Definir a, s Como Entero;
+	Definir opcion Como Caracter;
+	Definir resultado3 Como Entero;
+	Escribir "";
+	Escribir "                             ACERTIJO 3";
+	Escribir "";
+	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
+	Escribir "";
+	Escribir "3. ¿Qué es lo que no hace preguntas, pero necesita ser contestado?";
+	a <- azar(3);
+	Segun a Hacer
+		0: 
+			Escribir "1. MEGAFONO";
+			Escribir "2. MICROFONO";
+			Escribir "3. TELEFONO";
+		1:
+			Escribir "1. TELEFONO";
+			Escribir "2. MICROFONO";
+			Escribir "3. MEGAFONO";
+		2:
+			Escribir "1. MICROFONO";
+			Escribir "2. TELEFONO";
+			Escribir "3. MEGAFONO";
+	FinSegun
+	s <- 2;
+	Mientras s>=0 Hacer
+		Si s > 2 Entonces
+		FinSi
+		Esperar 1 Segundos;
+		s <- s - 1;
+	FinMientras
+	Borrar Pantalla;
+	Escribir "";
+	Escribir "                                 ATENCIÓN!!!";
+	Escribir "DEBES ESCRIBIR LA PALABRA CORRECTA CON EXACTITUD, EN MAYUSCULAS Y SIN TILDES";
+	Escribir "";
+	Leer opcion;
+	Borrar Pantalla;
+	Esperar 1 segundo;
+	resultado3 <- respuesta3(opcion);
+	Esperar 2 segundos;
+	Borrar Pantalla;
+FinSubProceso
+SubProceso resultado3 <- respuesta3(opcion)
+	Definir resultado3 Como Entero;
+	resultado3 <- 0;
+	Si opcion = "TELEFONO" Entonces
+		Escribir "";
+		Escribir "CORRECTO";
+		resultado3 <- resultado3 + 1;
+	SiNo
+		Si opcion = "MICROFONO" o opcion = "MEGAFONO" Entonces
+			Escribir "";
+			Escribir "INCORRECTO"; 
+		SiNo
+			Escribir "";
+			Escribir "¡¡¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayúsculas y sin tilde la palabra correcta.";
+		FinSi
+	FinSi
+FinSubProceso
+SubProceso resultado4 <- acertijo_4(parte1)
+	Definir a, s Como Entero;
+	Definir opcion Como Caracter;
+	Definir resultado4 Como Entero;
+	Escribir "";
+	Escribir "                             ACERTIJO 4";
+	Escribir "";
+	Escribir "4. Un paciente en un hospital recibe un visitante. Una enfermera le pregunta quién era el visitante."; 
+	Escribir "   El paciente le responde: - No tengo hermanos ni hermanas, pero el padre de ese hombre es el hijo de mi padre.";
+	Escribir "";
+	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
+	Escribir "";
+	a <- azar(3);
+	Segun a Hacer
+		0: 
+			Escribir "1. ABUELO";
+			Escribir "2. PADRE";
+			Escribir "3. HIJO";
+		1:
+			Escribir "1. PADRE";
+			Escribir "2. HIJO";
+			Escribir "3. ABUELO";
+		2:
+			Escribir "1. HIJO";
+			Escribir "2. ABUELO";
+			Escribir "3. PADRE";
+	FinSegun
+	s <- 2;
+	Mientras s>=0 Hacer
+		Si s > 2 Entonces
+		FinSi
+		Esperar 1 Segundos;
+		s <- s - 1;
+	FinMientras
+	Borrar Pantalla;
+	Escribir "";
+	Escribir "                                 ATENCIÓN!!!";
+	Escribir "DEBES ESCRIBIR LA PALABRA CORRECTA CON EXACTITUD, EN MAYUSCULAS Y SIN TILDES";
+	Escribir "";
+	Leer opcion;
+	Borrar Pantalla;
+	Esperar 1 segundo;
+	resultado4 <- respuesta4(opcion);
+	Esperar 2 segundos;
+	Borrar Pantalla;
+FinSubProceso
+SubProceso resultado4 <- respuesta4(opcion)
+	Definir resultado4 Como Entero;
+	resultado4 <- 0;
+	Si opcion = "HIJO" Entonces
+		Escribir "";
+		Escribir "CORRECTO";
+		resultado4 <- resultado4 + 1;
+	SiNo
+		Si opcion = "ABUELO" o opcion = "PADRE" Entonces
+			Escribir "";
+			Escribir "INCORRECTO"; 
+		SiNo
+			Escribir "";
+			Escribir "¡¡¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayúsculas y sin tilde la palabra correcta.";
+		FinSi
+	FinSi
+FinSubProceso
+//######################## ..............:::::MENSAJE PARTE 2 DE ACERTIJO::::::.............######################################
+SubProceso parte_2(parte2)
+	Definir z Como Entero;
+	z <- 0;
+	Definir contador_acertijos_dificiles Como Entero;
+	contador_acertijos_dificiles <- 0;
+	Para contador_acertijos_dificiles <- 0 Hasta 4 Con Paso 1 Hacer
+		Borrar Pantalla;
+		Esperar 1 Segundo;
+		Escribir "";
+		Escribir "                        |********************************************************************|";
+		Escribir "                        |***  A CONTINUACIÓN LOS PRÓXIMOS 6 ACERTIJOS SE PONEN DIFÍCILES  ***|"; 
+		Escribir "                        |********************************************************************|";
+		Escribir "";
+		Escribir "";
+		Escribir "                  XXXXXXXXXXXX", "  XXXXXXXXXXX","  XXXXXXXXXXXX", "  XXXXXXXXXXX","  XXXXXXXXXXXX", "  XXXXXXXXXXX";
+		Escribir "                       XXX    ", "  XXX     XXX","       XXX    ", "  XXX     XXX","       XXX    ", "  XXX     XXX";
+		Escribir "                       XXX    ", "  XXX     XXX","       XXX    ", "  XXX     XXX","       XXX    ", "  XXX     XXX";
+		Escribir "                       XXX    ", "  XXXXXXXXXXX","       XXX    ", "  XXXXXXXXXXX","       XXX    ", "  XXXXXXXXXXX";
+		Escribir "                       XXX    ", "  XXX     XXX","       XXX    ", "  XXX     XXX","       XXX    ", "  XXX     XXX";
+		Escribir "                  XXX  XXX    ", "  XXX     XXX","  XXX  XXX    ", "  XXX     XXX","  XXX  XXX    ", "  XXX     XXX";
+		Escribir "                  XXXxxXXX    ", "  XXX     XXX","  XXXxxXXX    ", "  XXX     XXX","  XXXxxXXX    ", "  XXX     XXX";
+		contador_acertijos_dificiles <- contador_acertijos_dificiles + 1;
+		Esperar 1 Segundo;
+		Borrar Pantalla;
+		Escribir "";
+	FinPara
+	Esperar 2 Segundos;
+FinSubProceso
+//######################## ..............:::::INICIO PARTE 2 DE ACERTIJO::::::.............######################################
+SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
+	Definir opcion_elegida Como Entero;
+	Definir resultadoA, resultadoB, resultadoC, resultadoD, resultadoE, resultadoF Como Entero;
+	Definir resultadoParteDos Como Entero; 
+	Definir acertijos_2 Como Caracter;
+	Dimension acertijos_2[7];
+	acertijos_2[0] <- "Completa esta secuencia: 16, 06, 68, 88, X, 98. ¿Qué número va en el lugar de la X?";
+	acertijos_2[1] <- "Una persona cazó 10 arañas y escarabajos.";
+	acertijos_2[2] <- "¿Cuál es la probabilidad de obtener un 6 o un 7 al lanzar un par de dados?";
+	acertijos_2[3] <- "El nivel del agua en un embalse es bajo, pero se duplica todos los días. Se necesitan 60 días para llenar el depósito."; 
+	acertijos_2[4] <- "¿Cuánto tiempo tarda el depósito en llenarse por la mitad?";
+	acertijos_2[5] <- "Antes de ayer, Juan tenía 15 años. El año que viene, tendrá 18. ¿Qué día es hoy?";
+	acertijos_2[6] <- "Si Martin le dice a Mariano: - Dame siete canicas y tendre el doble que vos. Pero Mariano le contesta: -Mejor dame vos siete canicas y asi tendremos la misma cantidad. ¿Cuántas canicas tiene cada uno?"; 
+	resultadoA <- 0;
+	resultadoB <- 0;
+	resultadoC <- 0;
+	resultadoD <- 0;
+	resultadoE <- 0;
+	resultadoF <- 0;
+	Repetir
+		Escribir "";
+		Escribir "5. ", acertijos_2[0];
+		Escribir "";
+		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
+		Escribir "";
+		Escribir "1. 78";
+		Escribir "2. 77";
+		Escribir "3. 97";
+		Escribir "4. 79";
+		Leer opcion_elegida;
+		Esperar 1 Segundo;
+		Si opcion_elegida = 1 Entonces
+			Escribir "";
+			Escribir "CORRECTO";
+			resultadoA <- resultadoA + 1;
+		SiNo
+			Si opcion_elegida > 1 y opcion_elegida < 5 Entonces
+				Escribir "";
+				Escribir "INCORRECTO";
+			SiNo 
+				Si opcion_elegida <= 0 o opcion_elegida >= 5 Entonces
+					Escribir "";
+					Escribir "La opcion digitada no existe. Intentalo de nuevo";
+				FinSi
+			FinSi
+		FinSi
+		Escribir "";
+		Esperar 2 Segundos;
+		Borrar Pantalla;
+	Hasta Que opcion_elegida > 0 y opcion_elegida < 5
+	Repetir
+		Escribir "";
+		Escribir "6. ", acertijos_2[1];
+		Escribir "   Estos conforman un total de 66 patas.";
+		Escribir "   ¿Cuántos animales tiene de cada una de estas especies?";
+		Escribir "";
+		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
+		Escribir "";
+		Escribir "1. 6 ARAÑAS Y 4 ESCARABAJOS";
+		Escribir "2. 2 ARAÑAS Y 8 ESCARABAJOS";
+		Escribir "3. 3 ARAÑAS Y 7 ESCARABAJOS";
+		Escribir "4. 9 ARAÑAS Y 1 ESCARABAJOS";
+		Leer opcion_elegida;
+		Esperar 1 Segundo;
+		Si opcion_elegida = 3 Entonces
+			Escribir "";
+			Escribir "CORRECTO";
+			resultadoB <- resultadoB + 1;
+		SiNo
+			Si opcion_elegida = 1 o opcion_elegida = 2 o opcion_elegida = 4 Entonces
+				Escribir "";
+				Escribir "INCORRECTO";
+			SiNo 
+				Si opcion_elegida <= 0 o opcion_elegida >= 5 Entonces
+					Escribir "";
+					Escribir "La opcion digitada no existe. Intentalo de nuevo";
+				FinSi
+			FinSi
+		FinSi
+		Escribir "";
+		Esperar 2 Segundos;
+		Borrar Pantalla;
+	Hasta Que opcion_elegida > 0 y opcion_elegida < 5
+	Repetir
+		Escribir "";
+		Escribir "7. ", acertijos_2[2];
+		Escribir "";
+		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
+		Escribir "";
+		Escribir "1. 9/35";
+		Escribir "2. 6/34";
+		Escribir "3. 11/36";
+		Escribir "4. 10/37";
+		Leer opcion_elegida;
+		Esperar 1 Segundo;
+		Si opcion_elegida = 3 Entonces
+			Escribir "";
+			Escribir "CORRECTO";
+			resultadoC <- resultadoC + 1;
+		SiNo
+			Si opcion_elegida = 1 o opcion_elegida = 2 o opcion_elegida = 4 Entonces
+				Escribir "";
+				Escribir "INCORRECTO";
+			SiNo 
+				Si opcion_elegida <= 0 o opcion_elegida >= 5 Entonces
+					Escribir "";
+					Escribir "La opcion digitada no existe. Intentalo de nuevo";
+				FinSi
+			FinSi
+		FinSi
+		Escribir "";
+		Esperar 2 Segundos;
+		Borrar Pantalla;
+	Hasta Que opcion_elegida > 0 y opcion_elegida < 5
+	Repetir
+		Escribir "";
+		Escribir "8. ", acertijos_2[3];
+		Escribir "   ", acertijos_2[4];
+		Escribir "";
+		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
+		Escribir "";
+		Escribir "1. 59";
+		Escribir "2. 30";
+		Escribir "3. 49";
+		Escribir "4. 15";
+		Leer opcion_elegida;
+		Esperar 1 Segundo;
+		Si opcion_elegida = 1 Entonces
+			Escribir "";
+			Escribir "CORRECTO";
+			resultadoD <- resultadoD + 1;
+		SiNo
+			Si opcion_elegida > 1 y opcion_elegida < 5 Entonces
+				Escribir "";
+				Escribir "INCORRECTO";
+			SiNo 
+				Si opcion_elegida <= 0 o opcion_elegida >= 5 Entonces
+					Escribir "";
+					Escribir "La opcion digitada no existe. Intentalo de nuevo";
+				FinSi
+			FinSi
+		FinSi
+		Escribir "";
+		Esperar 2 Segundos;
+		Borrar Pantalla;
+	Hasta Que opcion_elegida > 0 y opcion_elegida < 5
+	Repetir
+		Escribir "";
+		Escribir "9. ", acertijos_2[5];
+		Escribir "";
+		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
+		Escribir "";
+		Escribir "1. 1 de diciembre";
+		Escribir "2. 1 de febrero";
+		Escribir "3. 31 de diciembre";
+		Escribir "4. 1 de enero";
+		Leer opcion_elegida;
+		Esperar 1 Segundo;
+		Si opcion_elegida = 4 Entonces
+			Escribir "";
+			Escribir "CORRECTO";
+			resultadoE <- resultadoE + 1;
+		SiNo
+			Si opcion_elegida > 0 y opcion_elegida < 4 Entonces
+				Escribir "";
+				Escribir "INCORRECTO";
+			SiNo 
+				Si opcion_elegida <= 0 o opcion_elegida >= 5 Entonces
+					Escribir "";
+					Escribir "La opcion digitada no existe. Intentalo de nuevo";
+				FinSi
+			FinSi
+		FinSi
+		Escribir "";
+		Esperar 2 Segundos;
+		Borrar Pantalla;
+	Hasta Que opcion_elegida > 0 y opcion_elegida < 5
+	Repetir
+		Escribir "";
+		Escribir "10. ", acertijos_2[6];
+		Escribir "";
+		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
+		Escribir "";
+		Escribir "1. MARIANO 19 Y MARTIN 5";
+		Escribir "2. MARTIN 17 Y MARIANO 6";
+		Escribir "3. MARIANO 5 Y MARTIN 17";
+		Escribir "4. MARTIN 19 Y MARIANO 5";
+		Leer opcion_elegida;
+		Esperar 1 Segundo;
+		Si opcion_elegida = 4 Entonces
+			Escribir "";
+			Escribir "CORRECTO";
+			resultadoF <- resultadoF + 1;
+		SiNo
+			Si opcion_elegida > 0 y opcion_elegida < 4 Entonces
+				Escribir "";
+				Escribir "INCORRECTO";
+			SiNo 
+				Si opcion_elegida <= 0 o opcion_elegida >= 5 Entonces
+					Escribir "";
+					Escribir "La opcion digitada no existe. Intentalo de nuevo";
+				FinSi
+			FinSi
+		FinSi
+		Escribir "";
+		Esperar 2 Segundos;
+		Borrar Pantalla;
+	Hasta Que opcion_elegida > 0 y opcion_elegida < 5
+	resultadoParteDos <- resultadoA + resultadoB + resultadoC + resultadoD + resultadoE + resultadoF;
+FinSubProceso
+SubProceso resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos, opcion_apuesta, plata_ingresada)
+	//######################## ..............::::: OBTENCION DE RESULTADOS E IMPRESION DE GANANCIA O PERDIDA ::::::.............######################################
+	Definir ganancia, perdida, plata Como Real;
+	Definir alerta, mensajeFinal Como Cadena;
+	Escribir plata_ingresada;
+	Si resultadoParteUno = 4 y resultadoParteDos = 6 Entonces
+		ganancia <- opcion_apuesta * 2;;
+		alerta <- "FELICITACIONES!!!";
+		mensajeFinal <- "Has resuelto los 10 acertijos correctamente";
+		Escribir Concatenar(alerta,mensajeFinal);
+		Escribir "A tu apuesta de ", opcion_apuesta, " se le suma la ganancia de ", ganancia;
+		Escribir "";
+		Escribir "El monto de plata que queda para jugar acertijos es el siguiente: ";
+		plata <- plata_ingresada + opcion_apuesta + ganancia;
+		Escribir plata, " de plata";
+	SiNo
+		Si resultadoParteUno = 3 y resultadoParteDos = 5 o resultadoParteUno = 4 y resultadoParteDos = 5 o resultadoParteUno = 3 y resultadoParteDos = 6 Entonces
+			ganancia <- opcion_apuesta * 0.3;;
+			alerta <- "MUY BIEN!!!";
+			mensajeFinal <- "Has resuelto la cantidad de acertijos para obtener un 30% de ganancia";
+			Escribir Concatenar(alerta,mensajeFinal);
+			Escribir "A tu apuesta de ", opcion_apuesta, " se le suma la ganancia de ", ganancia;
+			Escribir "";
+			Escribir "El monto de plata que queda para jugar acertijos es el siguiente: ";
+			plata <- plata_ingresada + opcion_apuesta + ganancia;
+			Escribir plata_ingresada, " de plata";
+		SiNo
+			perdida <- opcion_apuesta * 0;
+			alerta <- "MAL JUGADO!!!";
+			mensajeFinal <- "No has resuelto la cantidad mínima de acertijos para obtener ganancias";
+			Escribir Concatenar(alerta,mensajeFinal);
+			Escribir "Has perdido los ", opcion_apuesta, " de plata apostados";
+			Escribir "";
+			Escribir "El monto de plata que queda para jugar acertijos es el siguiente: ";
+			plata <- plata_ingresada - opcion_apuesta;
+			Escribir plata, " de plata";
+		FinSi
+	FinSi
+FinSubProceso
 
 	
 
