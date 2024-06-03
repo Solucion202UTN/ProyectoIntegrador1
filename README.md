@@ -4,10 +4,12 @@ Proyecto Final realizado en PSEINT para la cursada de la facultad regional técn
 
 ## Integrantes del Equipo
 
-- Omar Ignacio Velazquez
-- Juan Marcos Orellana
-- Nombre completo del miembro del equipo 3
-- ...
+- [Omar Ignacio Velazquez](https://github.com/IgnacioVelazquez92)
+- [Juan Marcos Orellana](https://github.com/juanmarcoso)
+- [Africa Aular](https://github.com/AFRIAULAR)
+- [Emmanuel Herrera](https://github.com/emmanhok)
+- [Gimena Gauna](https://github.com/gime09)
+- [Marianela Fernanda Sanhueza](https://github.com/marfesan)
 
 ## Requisitos
 
