@@ -2,7 +2,7 @@ Proceso MENU
 	Definir EligeSalir Como Logico;
 	Definir eleccion Como Numeros;
 	definir plata Como Real;
-	plata <- 0; //Chicos creo que en el la sección MENU deberiamos pedir ingreso de plata inicial
+	plata <- 0;
 	
 	Escribir "                     /$$                     /$$                                               /$$          ";
 	Escribir "                    | $$                    |__/                                              |__/          ";
@@ -1465,7 +1465,7 @@ SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 	resultadoParteDos <- resultadoA + resultadoB + resultadoC + resultadoD + resultadoE + resultadoF;
 FinSubProceso
 SubProceso resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos, opcion_apuesta, plata_ingresada)
-	//######################## ..............::::: OBTENCION DE RESULTADOS E IMPRESION DE GANANCIA O PERDIDA ::::::.............######################################
+//######################## ..............::::: OBTENCION DE RESULTADOS E IMPRESION DE GANANCIA O PERDIDA ::::::.............######################################
 	Definir ganancia, perdida, plata Como Real;
 	Definir alerta, mensajeFinal Como Cadena;
 	Escribir plata_ingresada;
