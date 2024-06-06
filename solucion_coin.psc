@@ -860,7 +860,8 @@ SubProceso Ruleta (plata Por Referencia)
 	
 FinSubProceso
 
-//######################## ..............::::: INICIO DE ACERTIJOS ::::::.............######################################
+//######################## ..............::::: INICIO DE ACERTIJO ::::::.............######################################
+//######################## ..............::::: PRESENTACION DEL JUEGO ::::::.............######################################
 SubProceso acertijo(plata Por Referencia)
 	Escribir "";
 	Escribir "                                             ","?????????????????????";
@@ -899,6 +900,8 @@ SubProceso acertijo(plata Por Referencia)
 	Escribir "                                 |***************************************************|";
 	Esperar Tecla;
 	Borrar Pantalla;
+//######################## ..............::::: INGRESO DE PLATA DEL USUARIO ::::::.............######################################
+// Se pide al usuario que ingrese la plata: Se tomara un minimo de 100 valor de plata
 	Definir plata_ingresada Como Real;
 	Escribir "Ingrese la cantidad de plata deseada (cantidad mínima para este juego: 100 de plata): ";
 	Leer plata_ingresada;
@@ -910,28 +913,40 @@ SubProceso acertijo(plata Por Referencia)
 		Hasta Que plata_ingresada > 1
 	FinSi
 	plata_ingresada <- plata_ingresada + plata;
+//################## ........::::: INICIA EL LLAMADO A SUBPROCESOS PARA EL JUEGO::::::.......################################
+// Se llama al subproceso para pedirle al usuario que valor de plata desea apostar minimo 100 de plata
 	Definir opcion_apuesta Como Real;
 	opcion_apuesta <- apuesta_acertijo(plata_ingresada);
+// Se llama al subproceso para iniciar los acertijos de la parte 1 de acertijos (seran 4 primeros acertijos más faciles que los 6 posteriores)
 	Definir parte1 Como Entero;
 	parte1 <- 0;
 	parte_1(parte1);
+// En este subproceso se llevará a cabo el calculo del resultado de la parte uno para calcular cantidad de respuestas correctas
+// Para calcular al final ganancias o pérdiadas
 	Definir resultado1, resultado2, resultado3, resultado4 Como Entero;
 	resultado1 <- acertijo_1(parte1);
 	resultado2 <- acertijo_2(parte1);
 	resultado3 <- acertijo_3(parte1);
 	resultado4 <- acertijo_4(parte1);
+	// Se llama al subproceso para dar un mensaje sobre el inicio de la parte 2
 	Definir parte2 Como Entero;
 	parte2 <- 0;
 	parte_2(parte2);
+// Se llama al subproceso para iniciar los acertijos de la parte 2 de acertijos (seran 6 de dificultad superior a los primeros 4)
+// En este subproceso se llevará a cabo el calculo del resultado de la parte dos para calcular cantidad de respuestas correctas
+// Para calcular al final ganancias o pérdiadas
 	Definir resultadoParteUno, resultadoParteDos, resultadoTotal Como Entero;
 	resultadoParteUno <- resultado1 + resultado2 + resultado3 + resultado4; 
 	resultadoParteDos <- acertijos_parte_2(parte2);
+// Se llama al subproceso para calcular el resultado final y total de respuestas correctas para calcular 
+// ganancias o perdida de lo apostado
 	resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos, opcion_apuesta, plata_ingresada);
 	Escribir "";
 	Escribir "Presiona una Tecla para volver al MENU DE SOLUCION COIN";
 	Esperar Tecla;
 	Borrar Pantalla;
 FinSubProceso
+//################## ........::::: PEDIDO DE PLATA PARA APOSTAR ::::::.......################################
 SubProceso opcion_apuesta <- apuesta_acertijo(plata_ingresada)
 	Definir opcion_apuesta Como Real;
 	Escribir "                                 |***************************************************|";
@@ -968,7 +983,13 @@ SubProceso opcion_apuesta <- apuesta_acertijo(plata_ingresada)
 	Esperar Tecla;
 	Borrar Pantalla;
 FinSubProceso
-//######################## ..............:::::INICIO PARTE 1 ACERTIJO::::::.............######################################
+//######################## ..............::::: INICIO PARTE 1 ACERTIJO ::::::.............######################################
+// En esta parte 1 se utiliza: 
+// Condicional SEGUN con AZAR: para dar 3 opciones de respuestas en diferente orden
+// Ciclo MIENTRAS: para dar 15 segundos al usuario para memorizar la respuesta y luego escribirla
+// Luego de cada respuesta enviada por el usuario se llama a un subproceso que va calculando la cantidad 
+// de respuesta correcta con un contador usando un Condicional Si-Entonces y asi poder almacenar respuestas 
+// y poder calcular al final del juego el resultado final y las ganancias o perdida
 SubProceso parte_1(parte1)
 	Escribir "                                 |***************************************************|";
 	Escribir "                                 |***     QUE     COMIENCE      EL     JUEGO      ***|"; 
@@ -983,9 +1004,9 @@ SubProceso resultado1 <- acertijo_1(parte1)
 	Escribir "";
 	Escribir "                             ACERTIJO 1";
 	Escribir "";
-	Escribir "1. Me rascan continuamente de forma muy placentera, mi voz es muy bien timbrada y mi cuerpo de madera.";
-	Escribir "";
 	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
+	Escribir "";
+	Escribir "1. Me rascan continuamente de forma muy placentera, mi voz es muy bien timbrada y mi cuerpo de madera.";
 	Escribir "";
 	a <- azar(3);
 	Segun a Hacer
@@ -1002,12 +1023,11 @@ SubProceso resultado1 <- acertijo_1(parte1)
 			Escribir "2. GUITARRA";
 			Escribir "3. GAITA";
 	FinSegun
-	s <- 2;
-	Mientras s>=0 Hacer
-		Si s > 2 Entonces
-		FinSi
+	s <- 15;
+	Mientras s>0 Hacer
 		Esperar 1 Segundos;
 		s <- s - 1;
+		Escribir s;
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
@@ -1045,9 +1065,9 @@ SubProceso resultado2 <- acertijo_2(parte1)
 	Escribir "";
 	Escribir "                             ACERTIJO 2";
 	Escribir "";
-	Escribir "2. Choco me dice la gente, late mi corazón. El que no sepa mi nombre, es un gran tontorrón.";
-	Escribir "";
 	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
+	Escribir "";
+	Escribir "2. Choco me dice la gente, late mi corazón. El que no sepa mi nombre, es un gran tontorrón.";
 	Escribir "";
 	a <- azar(3);
 	Segun a Hacer
@@ -1064,12 +1084,11 @@ SubProceso resultado2 <- acertijo_2(parte1)
 			Escribir "2. CHOCOTORTA";
 			Escribir "3. CHOCOLATE";
 	FinSegun
-	s <- 2;
-	Mientras s>=0 Hacer
-		Si s > 2 Entonces
-		FinSi
+	s <- 15;
+	Mientras s>0 Hacer
 		Esperar 1 Segundos;
 		s <- s - 1;
+		Escribir s;
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
@@ -1110,6 +1129,7 @@ SubProceso resultado3 <- acertijo_3(parte1)
 	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
 	Escribir "";
 	Escribir "3. ¿Qué es lo que no hace preguntas, pero necesita ser contestado?";
+	Escribir "";
 	a <- azar(3);
 	Segun a Hacer
 		0: 
@@ -1125,12 +1145,11 @@ SubProceso resultado3 <- acertijo_3(parte1)
 			Escribir "2. TELEFONO";
 			Escribir "3. MEGAFONO";
 	FinSegun
-	s <- 2;
-	Mientras s>=0 Hacer
-		Si s > 2 Entonces
-		FinSi
+	s <- 15;
+	Mientras s>0 Hacer
 		Esperar 1 Segundos;
 		s <- s - 1;
+		Escribir s;
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
@@ -1168,10 +1187,10 @@ SubProceso resultado4 <- acertijo_4(parte1)
 	Escribir "";
 	Escribir "                             ACERTIJO 4";
 	Escribir "";
+	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
+	Escribir "";
 	Escribir "4. Un paciente en un hospital recibe un visitante. Una enfermera le pregunta quién era el visitante."; 
 	Escribir "   El paciente le responde: - No tengo hermanos ni hermanas, pero el padre de ese hombre es el hijo de mi padre.";
-	Escribir "";
-	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
 	Escribir "";
 	a <- azar(3);
 	Segun a Hacer
@@ -1188,12 +1207,11 @@ SubProceso resultado4 <- acertijo_4(parte1)
 			Escribir "2. ABUELO";
 			Escribir "3. PADRE";
 	FinSegun
-	s <- 2;
-	Mientras s>=0 Hacer
-		Si s > 2 Entonces
-		FinSi
+	s <- 15;
+	Mientras s>0 Hacer
 		Esperar 1 Segundos;
 		s <- s - 1;
+		Escribir s;
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
@@ -1224,7 +1242,8 @@ SubProceso resultado4 <- respuesta4(opcion)
 		FinSi
 	FinSi
 FinSubProceso
-//######################## ..............:::::MENSAJE PARTE 2 DE ACERTIJO::::::.............######################################
+//######################## ..............::::: MENSAJE PARTE 2 DE ACERTIJO ::::::.............######################################
+// Se muestra un mensaje de inicio de la parte dos utilizando un ciclo "para" 
 SubProceso parte_2(parte2)
 	Definir z Como Entero;
 	z <- 0;
@@ -1254,6 +1273,10 @@ SubProceso parte_2(parte2)
 	Esperar 2 Segundos;
 FinSubProceso
 //######################## ..............:::::INICIO PARTE 2 DE ACERTIJO::::::.............######################################
+// Para mostrar cada acertijo se utiliza:
+//ARREGLO: para mostrar el texto de cada acertijo
+//Ciclo REPETIR: para pedir una opcion del  1 al 4 de lo contrario se muestra un mensaje para reingrese la opcion deseada
+//Condicional Si-Entonces con contador: para calcular respuestas correctas o incorrectas
 SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 	Definir opcion_elegida Como Entero;
 	Definir resultadoA, resultadoB, resultadoC, resultadoD, resultadoE, resultadoF Como Entero;
@@ -1503,9 +1526,3 @@ SubProceso resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos
 		FinSi
 	FinSi
 FinSubProceso
-
-	
-
-
-
-	
