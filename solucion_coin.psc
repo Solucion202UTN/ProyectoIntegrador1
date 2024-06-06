@@ -1027,7 +1027,6 @@ SubProceso resultado1 <- acertijo_1(parte1)
 	Mientras s>0 Hacer
 		Esperar 1 Segundos;
 		s <- s - 1;
-		Escribir s;
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
@@ -1088,7 +1087,6 @@ SubProceso resultado2 <- acertijo_2(parte1)
 	Mientras s>0 Hacer
 		Esperar 1 Segundos;
 		s <- s - 1;
-		Escribir s;
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
@@ -1149,7 +1147,6 @@ SubProceso resultado3 <- acertijo_3(parte1)
 	Mientras s>0 Hacer
 		Esperar 1 Segundos;
 		s <- s - 1;
-		Escribir s;
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
@@ -1211,7 +1208,6 @@ SubProceso resultado4 <- acertijo_4(parte1)
 	Mientras s>0 Hacer
 		Esperar 1 Segundos;
 		s <- s - 1;
-		Escribir s;
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
