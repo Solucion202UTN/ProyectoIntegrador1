@@ -619,17 +619,17 @@ SubProceso Ruleta (plata Por Referencia)
 	Escribir "///// Te contamos las reglas antes de comenzar /////";
 	Escribir "";
 	Escribir "---- Apuesta simple ----";
-	Escribir "Se trata de apostar a un solo n?mero.";
+	Escribir "Se trata de apostar a un solo numero.";
 	Escribir "La ganancia en esta apuesta es, lo apostado por 35!";
 	Escribir "";
 	Escribir "---- Apuesta por color ----";
-	Escribir "Se apuesta al color del n?mero ganador, si ser? rojo o negro.";
-	Escribir "Con esta apuesta se est? jugando a 18 n?meros ya que en la ruleta hay 18 n?meros rojos y 18 n?meros negros.";
+	Escribir "Se apuesta al color del numero ganador, si sera rojo o negro.";
+	Escribir "Con esta apuesta se esta jugando a 18 numeros ya que en la ruleta hay 18 numeros rojos y 18 numeros negros.";
 	Escribir "La ganancia en esta apuesta es la suma de lo apostado";
 	Escribir "";
 	Escribir "---- Apuesta por docena ----";
-	Escribir "Se trata de apostar en que docena estar? el n?mero ganador.";
-	Escribir "El tapete se divide en 3 docenas, cada una de ellas abarca 12 n?meros, por tanto al apostar por una docena se juega a 12 n?meros.";
+	Escribir "Se trata de apostar en que docena estar? el numero ganador.";
+	Escribir "El tapete se divide en 3 docenas, cada una de ellas abarca 12 numeros, por tanto al apostar por una docena se juega a 12 numeros.";
 	Escribir "La ganancia en esta apuesta es el doble de lo apostado";
 	
 	// Inicializar variables
@@ -643,7 +643,7 @@ SubProceso Ruleta (plata Por Referencia)
 	// Bucle principal del juego
 	Repetir
 		
-		Escribir "Men? de recomendaciones";
+		Escribir "Menu de recomendaciones";
 		Escribir "   1. Apuesta simple";
 		Escribir "   2. Apuesta por color";
 		Escribir "   3. Apuesta por docena";
@@ -679,9 +679,9 @@ SubProceso Ruleta (plata Por Referencia)
 					Escribir "Ingrese el numero que desea apostar entre 1 y 36: ";
 					Leer numero_apostado;
 					Si numero_apostado == numero_aleatorio Entonces
-						Escribir "Usted gan?!!!";
+						Escribir "Usted gano!!!";
 						plata <- plata + (plata_apostado * 35);
-						Escribir "Usted tiene ahora de plata: ", plata;
+						Escribir "Usted tiene ahora de plata: $", plata;
 						Escribir "";
 						Escribir "Presione cualquier tecla para salir";
 						Esperar Tecla;
@@ -785,7 +785,7 @@ SubProceso Ruleta (plata Por Referencia)
 							Si numero_aleatorio >= 13 & numero_aleatorio <= 24 Entonces
 								Escribir "Salio el numero ", numero_aleatorio;
 								Escribir "";
-								Escribir "Usted gan?!!";
+								Escribir "Usted gano!!";
 								plata <- (plata + (plata_apostado * 2));
 								Escribir "";
 								Escribir "Presione cualquier tecla";
@@ -812,7 +812,7 @@ SubProceso Ruleta (plata Por Referencia)
 							Si numero_aleatorio >= 25 & numero_aleatorio <= 36 Entonces
 								Escribir "Salio el numero ", numero_aleatorio;
 								Escribir "";
-								Escribir "Usted gan?!!";
+								Escribir "Usted gano!!";
 								plata <- (plata + (plata_apostado * 2));
 								Escribir "";
 								Escribir "Presione cualquier tecla";
