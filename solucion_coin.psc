@@ -24,7 +24,7 @@ Proceso MENU
 	
 	Repetir
 		Escribir ' ';
-		Escribir 'Elija una opci?n:';
+		Escribir 'Elija una opcion:';
 		Escribir '  1 - BlackJack';
 		Escribir '  2 - Juego de la ruleta';
 		Escribir '  3 - Juego de Dados';
@@ -60,7 +60,7 @@ Proceso MENU
 			9:
 				EligeSalir<-Verdadero;
 			De Otro Modo:
-				Escribir 'Eleccion no v?lida!';
+				Escribir 'Eleccion no valida!';
 		FinSegun
 	Hasta que EligeSalir
 FinProceso
@@ -95,7 +95,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 	Escribir "|(\/)|  | /\ |  | /\ |  | &  |    ","|  |  /  _ \__  \   / __ | |  |/    \  / ___\            ";
 	Escribir "| \/ |  | \/ |  |(__)|  |&|& |    ","|  |_(  <_> ) __ \_/ /_/ | |  |   |  \/ /_/  >           ";
 	Escribir "|   A|  |   A|  | /\A|  | | A|    ","|____/\____(____  /\____ | |__|___|  /\___  / /\  /\  /\ ";
-	Escribir "`----`  `----?  `----?  `----?    ","                \/      \/         \//_____/  \/  \/  \/ ";
+	Escribir "`----`  `----'  '----'  '----'    ","                \/      \/         \//_____/  \/  \/  \/ ";
 	
 	
 	Esperar 2 Segundos;
@@ -125,14 +125,14 @@ SubProceso menuBlackJack( plata Por Referencia)
 	
 	Repetir
 		Escribir ' ';
-		Escribir 'Elija una opci?n:';
+		Escribir 'Elija una opcion:';
 		Escribir '  1 - Jugar';
 		Escribir '  2 - Ingresar Dinero';
 		Escribir '  3 - Consultar Saldo';
 		Escribir '  4 - Salir';
 		Escribir ' ';
 		
-		Escribir Sin Saltar'Seleccione una opci?n ---';
+		Escribir Sin Saltar'Seleccione una opcion ---';
 		Leer eleccion;
 		Limpiar Pantalla;
 		
@@ -162,7 +162,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 			4:
 				EligeSalir<-Verdadero;
 			De Otro Modo:
-				Escribir 'Eleccion no v?lida!';
+				Escribir 'Eleccion no valida!';
 		FinSegun
 	Hasta que EligeSalir
 FinSubProceso
@@ -278,7 +278,7 @@ SubProceso cartaRetornada <- tomarCarta(baraja por referencia)
 			
 			cartaRetornada <- baraja[azarValor,azarTipo];
 			
-			// marcamos la carta que sale como le?da para que no se repita
+			// marcamos la carta que sale como leida para que no se repita
 			baraja[azarValor,azarTipo] <- Concatenar(Subcadena(cartaRetornada,0,1),"F");
 		SiNo
 			bandera <- falso;
@@ -426,12 +426,12 @@ SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja 
 		
 		Escribir ' DINERO DISPONIBLE : $', plata;
 		Escribir ' ';
-		Escribir 'Elija una opci?n:';
+		Escribir 'Elija una opcion:';
 		
 		Escribir '  1 - Pedir carta';
 		Escribir '  2 - Plantarse';
 		
-		Escribir Sin Saltar'Seleccione una opci?n ---';
+		Escribir Sin Saltar'Seleccione una opcion ---';
 		Leer eleccion;
 		Limpiar Pantalla;
 		mostrarCartasSobreLaMesaDelJugador(manoJugador, puntosJugador);
@@ -457,7 +457,7 @@ SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja 
 				plantarse<-Verdadero;
 				turnoDelCrupier(plata , apuesta, baraja,puntosJugador,puntosCrupier, manoJugador, manoCrupier);
 			De Otro Modo:
-				Escribir 'Eleccion no v?lida!';
+				Escribir 'Eleccion no valida!';
 		FinSegun
 		
 	FinMientras
@@ -628,7 +628,7 @@ SubProceso Ruleta (plata Por Referencia)
 	Escribir "La ganancia en esta apuesta es la suma de lo apostado";
 	Escribir "";
 	Escribir "---- Apuesta por docena ----";
-	Escribir "Se trata de apostar en que docena estar? el numero ganador.";
+	Escribir "Se trata de apostar en que docena estara el numero ganador.";
 	Escribir "El tapete se divide en 3 docenas, cada una de ellas abarca 12 numeros, por tanto al apostar por una docena se juega a 12 numeros.";
 	Escribir "La ganancia en esta apuesta es el doble de lo apostado";
 	
