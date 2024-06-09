@@ -901,55 +901,140 @@ SubProceso MostrarDado(numero)
     FinSegun
 FinSubProceso
 
-SubProceso JuegoDeDados (plata Por Referencia)
-    Definir apuesta, dado1, dado2, sumaDados Como Entero;
-    Definir seguirJugando Como Logico;
-    seguirJugando <- Verdadero;
-	
-    Mientras seguirJugando Hacer
-        Limpiar Pantalla;
-        Escribir "**********************************";
-        Escribir "*         Juego de Dados         *";
-        Escribir "**********************************";
-		Escribir "";
-		
-		Escribir "Cuánto desea apostar?: ";
-        Leer apuesta;
-		Limpiar Pantalla;
-		
-        Si apuesta <= plata Entonces
-            dado1 <- azar(6) + 1;
-            dado2 <- azar(6) + 1;
-            sumaDados <- dado1 + dado2;
-			
-            Escribir "Dado 1: ";
-            MostrarDado(dado1);
-            Escribir "Dado 2: ";
-            MostrarDado(dado2);
-            Escribir "Suma de los dados: ", sumaDados;
-			
-            Si sumaDados >= 7 Entonces
-                Escribir "¡Felicidades! Ganaste.";
-                plata <- plata + apuesta;
-            Sino
-                Escribir "Perdiste.";
-                plata <- plata - apuesta;
-            FinSi
-        Sino
-            Escribir "No tienes suficiente dinero para apostar esa cantidad.";
-        FinSi
-		
-		// Mostramos saldo actual
-		Escribir "***** Su saldo es: $", plata, " *****";
-		Escribir "";
-		Esperar 2 Segundos;
-		Escribir "";
-        Escribir "¿Deseas seguir jugando? (1 = Sí, 0 = No)";
-        Leer seguirJugando;
-		
-    FinMientras
+SubProceso JuegoDeDados(plata Por Referencia)
+    Definir seguirJugando Como Entero;
+    Definir apuesta, ingreso Como Real;
+    Definir dado1, dado2 Como Entero;
+    Definir resultado Como Entero;
 	
     Limpiar Pantalla;
-    Escribir "Gracias por jugar al Juego de Dados.";
-FinSubProceso
+	Escribir "";
+	Escribir "* * * * * * * * * * * * * * * * * * * * *";
+    Escribir "* * *  Bienvenido al juego de Dados * * *";
+	Escribir "* * * * * * * * * * * * * * * * * * * * *";
+    Escribir "";
+    Esperar 1 Segundos;
+	Limpiar Pantalla;
+	Escribir "";
+	Escribir " * * * * * * * * * * * * * * * * * * * * ";
+    Escribir " *  *  Bienvenido al juego de Dados *  *";
+	Escribir " * * * * * * * * * * * * * * * * * * * * ";
+    Escribir "";
+    Esperar 1 Segundos;
+	Limpiar Pantalla;
+	Escribir "";
+	Escribir "* * * * * * * * * * * * * * * * * * * * *";
+    Escribir "* * *  Bienvenido al juego de Dados * * *";
+	Escribir "* * * * * * * * * * * * * * * * * * * * *";
+    Escribir "";
+    Esperar 1 Segundos;
+	Limpiar Pantalla;
+	Escribir "";
+	Escribir " * * * * * * * * * * * * * * * * * * * * ";
+    Escribir " *  *  Bienvenido al juego de Dados *  *";
+	Escribir " * * * * * * * * * * * * * * * * * * * * ";
+    Escribir "";
+    Esperar 1 Segundos;
+	Limpiar Pantalla;
 
+	Escribir "";
+	Escribir "*** *** *** INSTRUCCIONES *** *** ***";
+	Escribir "";
+	Escribir "El objetivo es ganar al lanzar dos dados.";
+	Escribir "";
+	Escribir "   - Comienzas con un saldo inicial en tu cuenta.";
+	Escribir "";
+	Escribir "   - Debes realizar una apuesta antes de cada lanzamiento de dados.";
+	Escribir "";
+	Escribir "   - Se lanzarán dos dados después de realizar la apuesta.";
+	Escribir "";
+    Escribir "   - Dependiendo del resultado obtenido, ocurren las siguientes situaciones:";
+	Escribir "";
+	Escribir "     * Si sacas un 7, recuperas tu apuesta.";
+	Escribir "";
+	Escribir "     * Si sacas un número igual o mayor a 8, ganas el doble de tu apuesta.";
+	Escribir "";
+	Escribir "     * Si sacas un par de números iguales en los dados (doble), duplicas todo tu saldo.";
+	Escribir "";
+	Escribir "     * Si la suma de los números en los dados es menor o igual a 6, pierdes tu apuesta.";
+    Escribir "";
+	Escribir "   - El juego termina cuando decides dejar de jugar o cuando decides no ingresar más dinero.";
+    Escribir "";
+    Escribir "¡Disfruta del juego y buena suerte!";
+	Escribir "";
+	Escribir "Presione una tecla para empezar a jugar";
+	Esperar Tecla; 
+	Limpiar Pantalla;
+	
+	Escribir "_____________________________________________________________________";
+	Escribir "*  *  *  *  *  *  *  *  *  *  ¡JUGUEMOS!  *  *  *  *  *  *  *  *  * ";
+	Escribir "---------------------------------------------------------------------";
+	Escribir "";
+	Escribir "";
+    Repetir
+        Si plata <= 0 Entonces
+            Escribir "Tu saldo es $0 ¿Deseas ingresar dinero? (1 = Sí, 0 = No)";
+            Leer seguirJugando;
+            Si seguirJugando = 1 Entonces
+                Escribir "Ingrese la cantidad de dinero a ingresar: ";
+                Leer ingreso;
+                plata <- ingreso;
+                Limpiar Pantalla;
+            Sino
+            FinSi
+        FinSi
+        
+        Escribir "";
+		Escribir "***** Su saldo es: $", plata, " *****";
+        Escribir "";
+        Escribir "Ingrese su apuesta: ";
+        Leer apuesta;
+        
+        Si apuesta > plata Entonces
+            Escribir "No tienes suficiente saldo para esa apuesta. Inténtalo de nuevo.";
+        FinSi
+        //Apostamos:
+        plata <- plata - apuesta;
+        
+        // Tiramos los dados
+        dado1 <- Aleatorio(1, 6);
+        dado2 <- Aleatorio(1, 6);
+        resultado <- dado1 + dado2;
+        
+		Escribir "Has sacado un ", dado1, " y un ", dado2, " para un total de ", resultado;
+		MostrarDado(dado1);
+        MostrarDado(dado2);
+        
+        // Verificamos el resultado
+		Si resultado = 7 Entonces
+			Escribir "¡Recuperas tu apuesta! El total de los dados es 7.";
+			plata <- plata + apuesta;
+		Sino
+			Si resultado >= 8 Entonces
+				Escribir "¡Felicidades! Has ganado el doble de tu apuesta.";
+				plata <- plata + (apuesta * 2);
+			Sino
+				Si dado1 = dado2 Entonces
+					Escribir "¡Dobles! Has duplicado todo tu saldo. ¡FELICIDADES!";
+					plata <- plata * 2;
+				Sino
+					Si resultado <= 6 Entonces
+						Escribir "Lo siento, has perdido.";
+					FinSi
+				FinSi
+			FinSi
+		FinSi
+
+        Escribir "***** Su saldo es: $", plata, " *****";
+        Escribir "";
+        Esperar 2 Segundos;
+        Escribir "";
+        Escribir "¿Deseas seguir jugando? (1 = Sí, 0 = No)";
+        Leer seguirJugando;
+        
+    Hasta Que seguirJugando = 0
+    
+    Escribir "Gracias por jugar a los Dados en SOLUCION COIN";
+    Esperar 2 Segundos;
+    Limpiar Pantalla;
+FinSubProceso
