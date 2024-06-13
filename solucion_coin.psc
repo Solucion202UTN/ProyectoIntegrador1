@@ -58,6 +58,12 @@ Proceso MENU
 			8: 
 				Escribir 'Funcion 8';
 			9:
+				si plata >0 Entonces
+					Escribir "Retirando $", plata;
+					Esperar 2 Segundos;
+				FinSi
+				
+				Escribir "Adioss ¡Vuelva Pronto! ";
 				EligeSalir<-Verdadero;
 			De Otro Modo:
 				Escribir 'Eleccion no valida!';
@@ -95,8 +101,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 	Escribir "|(\/)|  | /\ |  | /\ |  | &  |    ","|  |  /  _ \__  \   / __ | |  |/    \  / ___\            ";
 	Escribir "| \/ |  | \/ |  |(__)|  |&|& |    ","|  |_(  <_> ) __ \_/ /_/ | |  |   |  \/ /_/  >           ";
 	Escribir "|   A|  |   A|  | /\A|  | | A|    ","|____/\____(____  /\____ | |__|___|  /\___  / /\  /\  /\ ";
-	Escribir "`----`  `----'  '----'  '----'    ","                \/      \/         \//_____/  \/  \/  \/ ";
-	
+	Escribir "`----`  `----´  `----´  `----´    ","                \/      \/         \//_____/  \/  \/  \/ ";
 	
 	Esperar 2 Segundos;
 	
@@ -414,7 +419,7 @@ FinFuncion
 
 
 //#############################################....:::Turno del Jugador::::....#################################################
-SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja Por Referencia, puntosJugador Por Referencia, puntosCrupier Por Referencia ,manoJugador Por Referencia,manoCrupier Por Referencia, ciclo Por Referencia)
+SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja Por Referencia, puntosJugador Por Referencia,puntosCrupier Por Referencia ,manoJugador Por Referencia,manoCrupier Por Referencia, ciclo Por Referencia)
 	definir turno Como Logico;
 	definir plantarse, perdio Como Logico;
 	Definir i , j , eleccion Como Entero;
