@@ -1088,20 +1088,68 @@ SubProceso acertijo(plata Por Referencia)
 	Borrar Pantalla;
 //######################## ..............::::: INGRESO DE PLATA DEL USUARIO ::::::.............######################################
 // Se pide al usuario que ingrese la plata: Se tomara un minimo de 100 valor de plata
-	Definir plata_ingresada Como Real;
-	Escribir "Ingrese la cantidad de plata deseada (cantidad mínima para este juego: 100 de plata): ";
-	Leer plata_ingresada;
-	Si plata_ingresada < 100 Entonces 
-		Repetir
-			Escribir "Debe digitar un monto superior a 99";
-			Escribir "Ingrese la cantidad de plata deseada: ";
-			Leer plata_ingresada;
-		Hasta Que plata_ingresada > 1
+	Definir decision, plata_ingresada Como Real;
+	Si plata <= 100 Entonces
+		Escribir "Tu saldo es: ", plata;
+		Escribir "Es inferior a 100";
+		Escribir "Debes ingresar al menos 100 de plata para la apuesta mínima";
+		Escribir "";
+		Escribir "Si desea ingresar plata digite 1";
+		Escribir "Si desea salir del juego digite 2";
+		Leer decision;
+		Segun decision Hacer
+			1:
+				Escribir "Ingrese la cantidad de plata deseada (cantidad mínima para este juego: 100 de plata): ";
+				Leer plata_ingresada;
+				Si plata_ingresada < 100 Entonces 
+					Repetir
+						Escribir "Debe digitar un monto superior a 99.99";
+						Escribir "Ingrese la cantidad de plata deseada: ";
+						Leer plata_ingresada;
+					Hasta Que plata_ingresada > 1
+				FinSi
+				plata_ingresada <- plata_ingresada + plata;
+				// Se llama al subproceso para iniciar el juego
+				juegoAcertijo(plata_ingresada);
+			2: 
+				decisionSalir(decision);
+				Borrar Pantalla;
+		FinSegun
 	FinSi
-	plata_ingresada <- plata_ingresada + plata;
+	Si plata > 100 Entonces
+		Escribir "Tu saldo es: ", plata;
+		Escribir "¿Desea ingresar más plata?";
+		Escribir "";
+		Escribir "Si desea ingresar más plata digite 1: ";
+		Escribir "Si desea salir del juego digite 2: ";
+		Leer decision;
+		Segun decision Hacer
+			1:
+				Escribir "Ingrese la cantidad de plata deseada (cantidad mínima para este juego: 100 de plata): ";
+				Leer plata_ingresada;
+				Si plata_ingresada < 100 Entonces 
+					Repetir
+						Escribir "Debe digitar un monto superior a 99.99";
+						Escribir "Ingrese la cantidad de plata deseada: ";
+						Leer plata_ingresada;
+					Hasta Que plata_ingresada > 1
+				FinSi
+				plata_ingresada <- plata_ingresada + plata;
+				// Se llama al subproceso para iniciar el juego
+				juegoAcertijo(plata_ingresada);
+			2: 
+				decisionSalir(decision);
+				Borrar Pantalla;
+		FinSegun
+	FinSi
+FinSubProceso
+//################## ........::::: OPCION DE SALIR DEL JUEGO::::::.......################################
+SubProceso decisionSalir(decision)				
+FinSubProceso
 //################## ........::::: INICIA EL LLAMADO A SUBPROCESOS PARA EL JUEGO::::::.......################################
 // Se llama al subproceso para pedirle al usuario que valor de plata desea apostar minimo 100 de plata
-	Definir opcion_apuesta Como Real;
+SubProceso juegoAcertijo(plata Por Referencia)
+	Definir opcion_apuesta, plata_ingresada Como Real;
 	opcion_apuesta <- apuesta_acertijo(plata_ingresada);
 // Se llama al subproceso para iniciar los acertijos de la parte 1 de acertijos (seran 4 primeros acertijos más faciles que los 6 posteriores)
 	Definir parte1 Como Entero;
@@ -1135,6 +1183,7 @@ FinSubProceso
 //################## ........::::: PEDIDO DE PLATA PARA APOSTAR ::::::.......################################
 SubProceso opcion_apuesta <- apuesta_acertijo(plata_ingresada)
 	Definir opcion_apuesta Como Real;
+	Escribir "";
 	Escribir "                                 |***************************************************|";
 	Escribir "                                 |***                   APUESTA                   ***|"; 
 	Escribir "                                 |***************************************************|";
