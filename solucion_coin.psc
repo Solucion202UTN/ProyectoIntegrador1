@@ -109,7 +109,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 	//Opciones de menu
 	Definir EligeSalir Como Logico;
 	Definir eleccion Como Numeros;
-	//cargamos el mazo
+	//cargamos el mazo de 52 cartas
 	Definir baraja, aux1, aux2 Como Caracter;
 	Dimension baraja[13,4];
 	definir i, j Como Entero;
@@ -300,7 +300,7 @@ SubProceso apostar(plata Por Referencia , baraja Por Referencia)
 	Limpiar Pantalla;
 	Definir apuesta Como Real;
 	Repetir
-		Escribir "Cuanto dinero desea apostar : $";
+		Escribir Sin Saltar "Cuanto dinero desea apostar : $";
 		leer apuesta;
 		Limpiar Pantalla;
 		si apuesta > plata Entonces
@@ -384,7 +384,7 @@ SubProceso mostrarCartasSobreLaMesaDelJugador(manoJugador Por Referencia , punto
 FinSubProceso
 
 
-//#############################################....::::Mostrar la manos del jugador por pantalla :::::....###########################################################
+//#############################################....::::Mostrar la manos del crupier por pantalla :::::....###########################################################
 
 SubProceso mostrarCartasSobreLaMesaDelCrupier(manoCrupier Por Referencia , puntosCrupier Por Referencia)
 	definir i  Como Entero;
@@ -422,7 +422,7 @@ FinFuncion
 SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja Por Referencia, puntosJugador Por Referencia,puntosCrupier Por Referencia ,manoJugador Por Referencia,manoCrupier Por Referencia, ciclo Por Referencia)
 	definir turno Como Logico;
 	definir plantarse, perdio Como Logico;
-	Definir i , j , eleccion Como Entero;
+	Definir eleccion Como Entero;
 	plantarse<-Falso;
 	perdio <- falso;
 	
@@ -439,8 +439,7 @@ SubProceso turnoDelJugador(plata Por Referencia, apuesta Por Referencia, baraja 
 		Escribir Sin Saltar'Seleccione una opcion ---';
 		Leer eleccion;
 		Limpiar Pantalla;
-		mostrarCartasSobreLaMesaDelJugador(manoJugador, puntosJugador);
-		mostrarCartasSobreLaMesaDelCrupier(manoCrupier  , puntosCrupier);
+
 		Segun eleccion Hacer
 			1: 
 				manoJugador[ciclo] <- tomarCarta(baraja);
@@ -475,7 +474,7 @@ FinSubProceso
 
 SubProceso turnoDelCrupier(plata Por Referencia, apuesta Por Referencia, baraja Por Referencia, puntosJugador Por Referencia, puntosCrupier Por Referencia ,manoJugador Por Referencia,manoCrupier Por Referencia)
 	definir perdio Como Logico;
-	Definir i , j , eleccion , ciclo Como Entero;
+	Definir eleccion , ciclo Como Entero;
 	perdio <- falso;
 	ciclo <- 1;
 	
