@@ -1085,8 +1085,8 @@ SubProceso acertijo(plata Por Referencia)
 	Escribir "                                 |***************************************************|";
 	Esperar Tecla;
 	Borrar Pantalla;
-//######################## ..............::::: INGRESO DE PLATA DEL USUARIO ::::::.............######################################
-// Se pide al usuario que ingrese la plata: Se tomara un minimo de 100 valor de plata
+	//######################## ..............::::: INGRESO DE PLATA DEL USUARIO ::::::.............######################################
+	// Se pide al usuario que ingrese la plata: Se tomara un minimo de 100 valor de plata
 	Definir decision, plata_ingresada Como Real;
 	Si plata <= 100 Entonces
 		Escribir "Tu saldo es: ", plata;
@@ -1102,7 +1102,7 @@ SubProceso acertijo(plata Por Referencia)
 				Leer plata_ingresada;
 				Si plata_ingresada < 100 Entonces 
 					Repetir
-						Escribir "Debe digitar un monto superior a 99.99";
+						Escribir "Debe digitar un monto superior a 99";
 						Escribir "Ingrese la cantidad de plata deseada: ";
 						Leer plata_ingresada;
 					Hasta Que plata_ingresada > 1
@@ -1128,7 +1128,7 @@ SubProceso acertijo(plata Por Referencia)
 				Leer plata_ingresada;
 				Si plata_ingresada < 100 Entonces 
 					Repetir
-						Escribir "Debe digitar un monto superior a 99.99";
+						Escribir "Debe digitar un monto superior a 99";
 						Escribir "Ingrese la cantidad de plata deseada: ";
 						Leer plata_ingresada;
 					Hasta Que plata_ingresada > 1
@@ -1147,15 +1147,15 @@ SubProceso decisionSalir(decision)
 FinSubProceso
 //################## ........::::: INICIA EL LLAMADO A SUBPROCESOS PARA EL JUEGO::::::.......################################
 // Se llama al subproceso para pedirle al usuario que valor de plata desea apostar minimo 100 de plata
-SubProceso juegoAcertijo(plata Por Referencia)
-	Definir opcion_apuesta, plata_ingresada Como Real;
+SubProceso juegoAcertijo(plata_ingresada)
+	Definir opcion_apuesta Como Real;
 	opcion_apuesta <- apuesta_acertijo(plata_ingresada);
-// Se llama al subproceso para iniciar los acertijos de la parte 1 de acertijos (seran 4 primeros acertijos más faciles que los 6 posteriores)
+	// Se llama al subproceso para iniciar los acertijos de la parte 1 de acertijos (seran 4 primeros acertijos más faciles que los 6 posteriores)
 	Definir parte1 Como Entero;
 	parte1 <- 0;
 	parte_1(parte1);
-// En este subproceso se llevará a cabo el calculo del resultado de la parte uno para calcular cantidad de respuestas correctas
-// Para calcular al final ganancias o pérdiadas
+	// En este subproceso se llevará a cabo el calculo del resultado de la parte uno para calcular cantidad de respuestas correctas
+	// Para calcular al final ganancias o pérdiadas
 	Definir resultado1, resultado2, resultado3, resultado4 Como Entero;
 	resultado1 <- acertijo_1(parte1);
 	resultado2 <- acertijo_2(parte1);
@@ -1165,14 +1165,14 @@ SubProceso juegoAcertijo(plata Por Referencia)
 	Definir parte2 Como Entero;
 	parte2 <- 0;
 	parte_2(parte2);
-// Se llama al subproceso para iniciar los acertijos de la parte 2 de acertijos (seran 6 de dificultad superior a los primeros 4)
-// En este subproceso se llevará a cabo el calculo del resultado de la parte dos para calcular cantidad de respuestas correctas
-// Para calcular al final ganancias o pérdiadas
+	// Se llama al subproceso para iniciar los acertijos de la parte 2 de acertijos (seran 6 de dificultad superior a los primeros 4)
+	// En este subproceso se llevará a cabo el calculo del resultado de la parte dos para calcular cantidad de respuestas correctas
+	// Para calcular al final ganancias o pérdiadas
 	Definir resultadoParteUno, resultadoParteDos, resultadoTotal Como Entero;
 	resultadoParteUno <- resultado1 + resultado2 + resultado3 + resultado4; 
 	resultadoParteDos <- acertijos_parte_2(parte2);
-// Se llama al subproceso para calcular el resultado final y total de respuestas correctas para calcular 
-// ganancias o perdida de lo apostado
+	// Se llama al subproceso para calcular el resultado final y total de respuestas correctas para calcular 
+	// ganancias o perdida de lo apostado
 	resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos, opcion_apuesta, plata_ingresada);
 	Escribir "";
 	Escribir "Presiona una Tecla para volver al MENU DE SOLUCION COIN";
@@ -1198,6 +1198,9 @@ SubProceso opcion_apuesta <- apuesta_acertijo(plata_ingresada)
 	Escribir "      3 DE LA PRIMERA PARTE Y 5 DE LA SEGUNDA PARTE";
 	Escribir "      4 DE LA PRIMERA PARTE Y 5 DE LA SEGUNDA PARTE"; 
 	Escribir "      3 DE LA PRIMERA PARTE Y 6 DE LA SEGUNDA PARTE";
+	Escribir "";
+	Escribir "En caso de no obtener las respuestas correctas indicadas para el 100% o el 30% de ganancias";
+	Escribir "Ud. perdera todo lo apostado";
 	Escribir "";
 	Escribir "El monto mínimo para apostar es 100 de plata";
 	Escribir "";
@@ -1718,30 +1721,29 @@ SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 	resultadoParteDos <- resultadoA + resultadoB + resultadoC + resultadoD + resultadoE + resultadoF;
 FinSubProceso
 SubProceso resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos, opcion_apuesta, plata_ingresada)
-//######################## ..............::::: OBTENCION DE RESULTADOS E IMPRESION DE GANANCIA O PERDIDA ::::::.............######################################
+	//######################## ..............::::: OBTENCION DE RESULTADOS E IMPRESION DE GANANCIA O PERDIDA ::::::.............######################################
 	Definir ganancia, perdida, plata Como Real;
 	Definir alerta, mensajeFinal Como Cadena;
-	Escribir plata_ingresada;
 	Si resultadoParteUno = 4 y resultadoParteDos = 6 Entonces
-		ganancia <- opcion_apuesta * 2;;
+		ganancia <- opcion_apuesta;
 		alerta <- "FELICITACIONES!!!";
 		mensajeFinal <- "Has resuelto los 10 acertijos correctamente";
 		Escribir Concatenar(alerta,mensajeFinal);
 		Escribir "A tu apuesta de ", opcion_apuesta, " se le suma la ganancia de ", ganancia;
 		Escribir "";
-		Escribir "El monto de plata que queda para jugar acertijos es el siguiente: ";
-		plata <- plata_ingresada + opcion_apuesta + ganancia;
+		Escribir "El saldo de plata que le queda es: ";
+		plata <- plata_ingresada + ganancia;
 		Escribir plata, " de plata";
 	SiNo
 		Si resultadoParteUno = 3 y resultadoParteDos = 5 o resultadoParteUno = 4 y resultadoParteDos = 5 o resultadoParteUno = 3 y resultadoParteDos = 6 Entonces
-			ganancia <- opcion_apuesta * 0.3;;
+			ganancia <- opcion_apuesta * 0.3;
 			alerta <- "MUY BIEN!!!";
 			mensajeFinal <- "Has resuelto la cantidad de acertijos para obtener un 30% de ganancia";
 			Escribir Concatenar(alerta,mensajeFinal);
 			Escribir "A tu apuesta de ", opcion_apuesta, " se le suma la ganancia de ", ganancia;
 			Escribir "";
-			Escribir "El monto de plata que queda para jugar acertijos es el siguiente: ";
-			plata <- plata_ingresada + opcion_apuesta + ganancia;
+			Escribir "El saldo de plata que le queda es: ";
+			plata <- plata_ingresada + ganancia;
 			Escribir plata_ingresada, " de plata";
 		SiNo
 			perdida <- opcion_apuesta * 0;
@@ -1750,7 +1752,7 @@ SubProceso resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos
 			Escribir Concatenar(alerta,mensajeFinal);
 			Escribir "Has perdido los ", opcion_apuesta, " de plata apostados";
 			Escribir "";
-			Escribir "El monto de plata que queda para jugar acertijos es el siguiente: ";
+			Escribir "El saldo de plata que le queda es: ";
 			plata <- plata_ingresada - opcion_apuesta;
 			Escribir plata, " de plata";
 		FinSi
