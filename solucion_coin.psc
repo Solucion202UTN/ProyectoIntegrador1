@@ -29,10 +29,10 @@ Proceso MENU
 		Escribir '  2 - Juego de la ruleta';
 		Escribir '  3 - Juego de Dados';
 		Escribir '  4 - Acertijo';
-		Escribir '  5 - Opcion 4';
-		Escribir '  6 - Opcion 5';
-		Escribir '  7 - Opcion 6';
-		Escribir '  8 - Opcion 7';
+		Escribir '  5 - Adivinanzas de Animales';
+		Escribir '  6 - Opcion 6';
+		Escribir '  7 - Opcion 7';
+		Escribir '  8 - Opcion 8';
 		Escribir '  9 - Salir';
 		Escribir ' ';
 		
@@ -50,7 +50,7 @@ Proceso MENU
 			4: 
 				acertijo(plata);
 			5: 
-				Escribir 'Funcion 5';
+				adivinanzasDeAnimales(plata);
 			6: 
 				Escribir 'Funcion 6';
 			7: 
@@ -1707,3 +1707,766 @@ SubProceso resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos
 		FinSi
 	FinSi
 FinSubProceso
+
+// ################################################**** Juego de Adivinanzas: Animales ****######################################################## 
+//Ingreso de plata y de apuesta 
+SubProceso apostarr(plata por Referencia , apuesta Por Referencia, deci Por Referencia)
+	Si (deci <> 0 Y plata == 0) Entonces
+		Escribir  " No tienes dinero en tu cuenta, cuanto de deseas cargar:";
+		Leer plata;
+	SiNo
+		Escribir  " Contas con un saldo de $: " , plata ;
+	FinSi
+	
+	Escribir "Tienes un saldo de $: ", plata, " plata.";
+	Escribir "¿Cuánto deseas apostar?";
+	Leer apuesta;
+	Mientras apuesta > plata Hacer
+		Escribir "No tienes suficiente plata  para esa apuesta. Inténtalo de nuevo.";
+		Escribir "¿Cuánto deseas apostar?";
+		Leer apuesta;
+	FinMientras
+	plata <- plata - apuesta;
+FinSubProceso
+
+SubProceso adivinanzasDeAnimales(plata Por Referencia)
+	Definir deci, res, x, t,men,v,r,corr,inc,resp,resp1,resp2,resp3,resp4,resp5,resp6,resp7,resp8,resp9,resp10,resp11,resp12,resp13,resp14,resp15,resp16,resp17,resp18,resp19,resp20,resp21,resp22,resp23,resp24,resp25,cont Como Entero;
+	Definir nom, j Como Caracter;
+	Definir porc Como Real;
+	Definir  apuesta, ganancia  Como Real;
+	deci <- 1;
+	//Dimension vector j (Lista de mejores jugadores)
+	Dimension j[20];
+	v <- 0;
+	t <- 1;
+	// Bucle repetitivo Mientras t=1 (Para entrar al menú de opciones)
+	Mientras t = 1 hacer
+		Borrar Pantalla;
+		Escribir "*************Juego de Adivinanzas: Animales *************";
+		Escribir " ";
+	    Escribir "                    /\_/\"  ;                                                            
+		Escribir "               ____/ o o \";
+		Escribir "              /~____ =ø= /"  ;                         
+		Escribir "             (______)__m_m)";
+		Escribir " ";
+		Escribir "                  _" ;
+		Escribir "                 /.\"  ;                            
+		Escribir "                 Y  \";
+		Escribir "                /    \";
+		Escribir "              //     /";
+		Escribir "             |/ /\_================";
+		Escribir "             / /";
+		Escribir "            / /";
+		Escribir "            \/";
+		Escribir " ";
+		Escribir "               __";
+		Escribir "             >(° )";
+		Escribir "               )/" ;
+		Escribir "              /(____/\";
+		Escribir "             /        )";
+		Escribir "             \ `  =~~/";
+		Escribir "              `---Y-"; 
+		Escribir " ";
+		Escribir  "               _";
+		Escribir  "              C°) , ,";
+		Escribir  "              ( \/^U^\";
+		Escribir  "               (      \";
+		Escribir  "                 i(__.i\*";
+		Escribir  "                 /|   / \";
+		Escribir  "               o u  o   o";
+		Escribir " ";
+		Escribir "*************Juego de Adivinanzas: Animales *************";
+		Escribir "Elegir una opción:";
+		Escribir "1. Partida Nueva";
+		Escribir "2. Mejores Jugadores";
+		Escribir "3. Salir";
+		Escribir "************(___) ***************************************";
+		Escribir "            (o o)_____/";
+		Escribir "             @@ `    \    moooo!";
+		Escribir "             \ ____, / ";
+		Escribir "             //    //";
+		Escribir "             ^^   ^^";
+		// variable men (Lee  la opcion se escoge: 1 , 2 y 3 ) 
+		Leer men;  
+		// si la variable men es = 1 (Se inicia una partida nueva) y se llama al SubProceso apostar para la inserción de plata
+		Si (men = 1)Entonces
+			apostarr(plata,apuesta,deci);
+			Borrar Pantalla;
+			// ciclo Mientras  para Repetir las partidas del juego 
+			r <- 1;
+			Mientras r = 1 Hacer
+				//Inicialización de variables 
+				corr <-0;
+				inc <- 0;
+				Borrar Pantalla;
+				Escribir "---Primera Pregunta---";
+				//Se elige al azar entre uno y cinco  para la elección de preguntas
+				resp <- azar(5)+1;
+				Si (resp = 1)Entonces
+					Escribir " Con bigotes sensibles y ágil al saltar, caza ratones sin parar.  ";
+					Escribir "Qué animal es:";
+					Escribir "1. Gato";
+					Escribir "2. Conejo";
+					Escribir "3. Caballo";
+					Escribir "4. Perro";
+					Escribir "5. Camello";
+					leer res;
+					Si (res = 1)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 2)Entonces
+					Escribir "Come Zanahorias con gran afición, y en el campo salta con emoción";
+					Escribir "Qué animal es:";
+					Escribir "1. Gato";
+					Escribir "2. Caballo";
+					Escribir "3. Perro";
+					Escribir "4. Conejo";
+					Escribir "5. Camello";
+					leer res;
+					//Muestra y contaviliza la cantidad de respuesta correctas e incorectas
+					Si (res = 4)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 3)Entonces
+					Escribir "Con crin y cola al viento va, corriendo en la pradera sin parar";
+					Escribir "Qué animal es:";
+					Escribir "1. Caballo";
+					Escribir "2. Gato";
+					Escribir "3. Conejo";
+					Escribir "4. Perro";
+					Escribir "5. Camello";
+					leer res;
+					Si (res = 1)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 4)Entonces
+					Escribir "Con olfato agudo y lealtad sin fin siempre es amigo, nunca es ruin.";
+					Escribir  "Qué animal es:";
+					Escribir "1. Gato";
+					Escribir "2. Perro";
+					Escribir "3. Caballo";
+					Escribir "4. Conejo";
+					Escribir "5. Camello";
+					leer res;
+					Si (res = 2)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 5)Entonces
+					Escribir "En el desierto puede andar, con joroba para almacenar.";
+					Escribir "Qué animal es:";
+					Escribir "1. Gato";
+					Escribir "2. Conejo";
+					Escribir "3. Camello";
+					Escribir "4. Perro";
+					Escribir "5. Caballo";
+					leer res;
+					Si (res = 3)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				
+				
+				
+				Escribir "Presiona ENTER para continuar";
+				Leer cont;
+				Escribir "";
+				Escribir "---Segunda Pregunta---";
+				resp <- azar(5)+1;
+				
+				
+				Si (resp = 1)Entonces
+					Escribir "En el mar nada con gran destreza, su sonrisa en su mayor belleza";
+					Escribir "Qué animal es:";
+					Escribir "1. Delfin";
+					Escribir "2. Vaca";
+					Escribir "3. Oso";
+					Escribir "4. Rana";
+					Escribir "5. Murciélago";
+					leer res;
+					Si (res = 1)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 2)Entonces
+					Escribir "En el campo pasta con gran placer, nos da leche para nuestro café ";
+					Escribir "Qué animal es:";
+					Escribir "1. Delfín";
+					Escribir "2. Oso";
+					Escribir "3. Vaca";
+					Escribir "4. Rana";
+					Escribir "5. Murciélago";
+					leer res;
+					Si (res = 3)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 3)Entonces
+					Escribir "En el bosque vive con gran tranquilidad, con su pelaje espeso y su gran bondad";
+					Escribir "Qué animal es:";
+					Escribir "1. Delfín";
+					Escribir "2. Oso";
+					Escribir "3. Vaca";
+					Escribir "4. Rana";
+					Escribir "5. Murciélago";
+					leer res;
+					Si (res = 2)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 4)Entonces
+					Escribir "En el estanque salta con gran agilidad, con su canto anuncia la llegada de la humedad";
+					Escribir "Qué animal es:";
+					Escribir "1. Delfín";
+					Escribir "2. Vaca";
+					Escribir "3. Oso";
+					Escribir "4. Rana";
+					Escribir "5. Murciélago";
+					leer res;
+					Si (res = 4)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 5)Entonces
+					Escribir "En la noche vuela sin hacer ruido, con sus alas oscuras en el cielo tendido";
+					Escribir "Qué animal es:";
+					Escribir "1. Delfín";
+					Escribir "2. Murciélago";
+					Escribir "3. Rana";
+					Escribir "4. Vaca";
+					Escribir "5. Oso";
+					leer res;
+					Si (res = 2)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				
+				
+				
+				Escribir "Presiona ENTER para continuar";
+				Leer cont;
+				Escribir "";
+				Escribir "---Tercera Pregunta---";
+				resp <- azar(5)+1;
+				
+				
+				Si (resp = 1)Entonces
+					Escribir "En el desierto se arrastra con sigilo y gran temor, con su aguijón en la cola, veneno lleva en su interior";
+					Escribir " Qué animal es:";
+					Escribir "1. Escorpión";
+					Escribir "2. Búfalo";
+					Escribir "3. Peces";
+					Escribir "4. Pato";
+					Escribir "5. Gorila";
+					leer res;
+					Si (res = 1)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 2)Entonces
+					Escribir "En la sabana africana puede verse pastar, con sus cuernos grandes y su pelaje alomar";
+					Escribir "Qué animal es:";
+					Escribir "1. Peces";
+					Escribir "2. Gorila";
+					Escribir "3. Pato";
+					Escribir "4.  Búfalo";
+					Escribir "5. Escorpión";
+					leer res;
+					Si (res = 4)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 3)Entonces
+					Escribir "En el agua nadan con gran destreza, en cardúmenes forman gran belleza.";
+					Escribir "Qué animal es:";
+					Escribir "1. Búfalo";
+					Escribir "2. Gorila";
+					Escribir "3. Pato";
+					Escribir "4. Peces";
+					Escribir "5. Escorpión";
+					leer res;
+					Si (res = 4)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 4)Entonces
+					Escribir "En la selva vive con gran majestuosidad, con su fuerza y su mirada llena de bondad.";
+					Escribir "Qué animal es:";
+					Escribir "1. Búfalo";
+					Escribir "2. Peces";
+					Escribir "3. Gorila";
+					Escribir "4. Pato";
+					Escribir "5. Escorpión";
+					leer res;
+					Si (res = 3)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 5)Entonces
+					Escribir "En lagos y ríos nada con gran habilidad, con su pico en forma de cuchara busca su sustento en la humendad";
+					Escribir "Qué animal es:";
+					Escribir "1. Pato";
+					Escribir "2. Peces";
+					Escribir "3. Búfalo";
+					Escribir "4. Gorila";
+					Escribir "5. Escorpión";
+					leer res;
+					Si (res = 1)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Escribir "Presiona ENTER para continuar";
+				Leer cont;
+				Escribir "";
+				Escribir "---Cuarta Pregunta---";
+				resp <- azar(5)+1;
+				
+				
+				Si (resp = 1)Entonces
+					Escribir "En la selva o en la sabana puede verse andar, con su trompa larga y sus colmillos alomar";
+					Escribir " Qué animal es:";
+					Escribir "1. Elefante";
+					Escribir "2. Ameba";
+					Escribir "3. Castor";
+					Escribir "4. Jirafa";
+					Escribir "5. Rinoceronte";
+					leer res;
+					Si (res = 1)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 2)Entonces
+					Escribir "En el microscopio se puede observar, sin forma definifa, es dificil de atrapar";
+					Escribir "Qué animal es:";
+					Escribir "1. Elefante";
+					Escribir "2. Ameba";
+					Escribir "3. Castor";
+					Escribir "4. Jirafa";
+					Escribir "5. Rinoceronte";
+					leer res;
+					Si (res = 2)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 3)Entonces
+					Escribir "En el río construye su hogar, con troncos y ramas, sin descansar";
+					Escribir "Qué animal es:";
+					Escribir "1. Elefante";
+					Escribir "2. Castor";
+					Escribir "3. Jirafa";
+					Escribir "4. Ameba";
+					Escribir "5. Rinoceronte";
+					leer res;
+					Si (res = 2)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 4)Entonces
+					Escribir "En la sabana su cuello destaca, alcanzando las hojas más altas con gracia";
+					Escribir "Qué animal es:";
+					Escribir "1. Elefante";
+					Escribir "2. Ameba";
+					Escribir "3. Castor";
+					Escribir "4. Jirafa";
+					Escribir "5. Rinoceronte";
+					leer res;
+					Si (res = 4)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 5)Entonces
+					Escribir "En la sabana africana puede encontrarse, con su cuerno en la nariz para protegerse";
+					Escribir "Qué animal es:";
+					Escribir "1. Elefante";
+					Escribir "2. Rinoceronte";
+					Escribir "3. Ameba";
+					Escribir "4. Jirafa";
+					Escribir "5. Castor";
+					leer res;
+					Si (res = 2)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Escribir "Presiona ENTER para continuar";
+				Leer cont;
+				Escribir "";
+				Escribir "---Quinta Pregunta---";
+				resp <- azar(5)+1;
+				
+				Si (resp = 1)Entonces
+					Escribir "En el bosque aúlla en la noche, cazador astuto, de mirada derroche";
+					Escribir "Qué animal es:";
+					Escribir "1. Araña";
+					Escribir "2. Ratón";
+					Escribir "3. Lobo";
+					Escribir "4. Mariposa";
+					Escribir "5. Ciervo";
+					leer res;
+					Si (res = 3)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 2)Entonces
+					Escribir "Teje su tela con gran destreza, en rincones oscuros atrapa su presa.";
+					Escribir "Qué animal es:";
+					Escribir "1. Lobo";
+					Escribir "2. Ratón";
+					Escribir "3. Araña";
+					Escribir "4. Mariposa";
+					Escribir "5. Ciervo";
+					leer res;
+					Si (res = 3)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 3)Entonces
+					Escribir "En la casa o en el campo puede estar, buscando comida sin descanzar";
+					Escribir "Qué animal es:";
+					Escribir "1. Lobo";
+					Escribir "2. Araña";
+					Escribir "3. Ciervo";
+					Escribir "4. Ratón";
+					Escribir "5. Mariposa";
+					leer res;
+					Si (res = 4)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 4)Entonces
+					Escribir "En el bosque majestuoso puede verse, con sus astas grandes y su mirada alegre";
+					Escribir "Qué animal es:";
+					Escribir "1. Lobo";
+					Escribir "2. Araña";
+					Escribir "3. Ratón";
+					Escribir "4. Ciervo";
+					Escribir "5. Mariposa";
+					leer res;
+					Si (res = 4)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Si (resp = 5)Entonces
+					Escribir "De colores brillantes y alas de papel, revolotea en el jardín con gran sencillez.";
+					Escribir "Qué animal es:";
+					Escribir "1. Mariposa";
+					Escribir "2. Lobo";
+					Escribir "3. Ratón";
+					Escribir "4. Ciervo";
+					Escribir "5. Araña"; 
+					leer res;
+					Si (res = 1)Entonces
+						corr <- corr +1;
+						Escribir "Tu respuesta es correcta";
+					Sino inc <- inc +1;
+						Escribir "Tu respuesta es incorrecta";
+					FinSi
+				FinSi
+				
+				Escribir "                   (\-/)";
+				Escribir "                  (:O O:)";
+				Escribir "                   \   /o\";
+				Escribir "                    | |\o \ ";
+				Escribir "                    (:) \ o\ ";
+				Escribir "                         \o \--_";
+				Escribir "                         ( o O";
+				Escribir "                         (  O";
+				
+				// Conocer  resultados
+				Escribir " Aprieta ENTER para conocer tus resultados";
+				Leer cont;
+				// Lectura de Porcentaje de las respuestas correctas
+				porc <- (corr/5) *100;
+				Borrar Pantalla;
+				// Devuelve cantidad de respuestas correctas, incorrectas y el porcentaje sacado
+				Escribir "********** Resultados **********";
+				Escribir "       {_}";
+				Escribir "      °-=\ ";
+				Escribir "         \\____(";
+				Escribir "        _|/---\\_";
+				Escribir "        \        \";
+				Escribir " ";
+				Escribir "Respuestas correctas: ",corr;
+				Escribir "Respuestas incorrectas: ",inc;
+				Escribir "Respondiste correctamente el ",porc, "% de las preguntas";
+				// Se muestra cuando el porcentaje sacado es de 100%
+				Si (porc = 100)Entonces
+					Escribir "Tu resultado es Insuperable ¡FELICITACIONES!";
+					
+					
+					Escribir  "                    __     __";
+					Escribir  "                   /  \~~~/  \";
+					Escribir  "             ,----(     ..    )";
+					Escribir  "            /      \__     __/";
+					Escribir  "           /|         (\  |(";
+					Escribir  "            ^ \   /_ \ /\ | ";
+					Escribir  "              |__| |__|  - ";
+					
+					Escribir  " ";
+					ganancia <- apuesta * 5;
+					plata <- plata + ganancia + apuesta;
+					Escribir " Has ganado ", ganancia , " pesos $. Tu nuevo saldo en plata es de: $ ", plata;
+					//Se guarda en el vector el nombre del jugador que acertó todas las respuestas
+					Escribir "";
+					Escribir "***Digita tu nombre***";
+					leer nom;
+					j[v] <- nom;
+					v <- v + 1;
+					Escribir "** ",nom, " Estas registrado dentro de los/as  mejores jugadores/as **";
+					
+					Escribir "               _" ;
+					Escribir "             /  \";
+					Escribir "            /|oo \" ;
+					Escribir "           (_|  /_)" ;
+					Escribir "             `@/  \    _";
+					Escribir "              |     \  \\";
+					Escribir "              \||    \  ))";
+					Escribir "               |||\ /  \//";
+					Escribir "             _//|| _\   /";
+					Escribir "            (_/(_|(____/";
+					
+					
+				FinSi
+				//Se muestra cuando el procentaje es entre 80% y 99%
+				Si (porc >=80)y(porc<100)Entonces
+					Escribir "Tu resultado es Sobresaliente  ¡BIEN HECHO!";
+					
+					Escribir "          @..@";
+					Escribir "         (----)";
+					Escribir "        < I  I >";
+					Escribir "          *  *  ";
+					Escribir  " ";
+					ganancia <- apuesta * 4;
+					plata <- plata + ganancia + apuesta;
+					Escribir " Has ganado ", ganancia , " pesos $. Tu nuevo saldo en plata es de : $ " , plata;
+					
+				FinSi
+				//Se muestra cuando el porcentaje es entre 60% y 79%
+				Si (porc >=60)y(porc<80)Entonces
+					Escribir "Tu resultado es Satisfactorio";
+					
+					Escribir "                   __   __  ";
+					Escribir "                 ( s \Y/ s )";
+					Escribir "                  \_<>|<>_/";
+					Escribir "                   (_/|\_) ";
+					
+					Escribir  " ";
+					ganancia <- apuesta *3;
+					plata <- plata + ganancia + apuesta;
+					Escribir " Has ganado ", ganancia , " pesos $. Tu nuevo saldo en plata es de: $ " ,plata;
+					
+					
+				FinSi
+				//Se muestra cuando el porcentaje es entre 40% y 59%
+				Si (porc >=40)y(porc<60)Entonces
+					Escribir "Tu resultado es Malo";
+					
+					Escribir "                     (\____/)";
+					Escribir "                     / @__@ \  ";
+					Escribir "                    (  (oo)  )";
+					Escribir "                      -.~~.-";
+					Escribir "                      /    \";
+					Escribir "                    @/      \_ ";
+					Escribir "                   (/ /    \ \)";
+					Escribir "                    WW ---- WW";
+					
+				    Escribir  " ";
+					ganancia <- apuesta * 2;
+					plata <- plata + ganancia + apuesta;
+					Escribir " Has ganado ", ganancia , " pesos $. Tu nuevo saldo en plata es de: $ ", plata;
+					
+					
+					
+				FinSi
+				//Se muestra cuando el porcentaje es entre 20% y 39%
+				Si (porc >=20)y(porc<40)Entonces
+					Escribir "Tu resultado es nefasto";
+					
+					Escribir "            mm";
+					Escribir "         /^(  )^\";
+					Escribir "         \,(..),/";
+					Escribir "           V~~V";
+					Escribir  " ";
+					ganancia <- apuesta * 1;
+					plata <- plata + ganancia + apuesta;
+					Escribir " Has ganado ", ganancia, " pesos $. Tu nuevo saldo en plata es de: $ ",plata;
+					
+				FinSi
+				//Se muestra cuando el porcentaje es entre 0% y 19%
+				Si (porc >=0)y(porc<20)Entonces
+					Escribir "Fallaste Loser ";
+					
+					
+					Escribir "        \    /\";
+					Escribir "         )  ( °)";
+					Escribir "        (  /  )";
+					Escribir "         \(__)|";
+					
+					Escribir  " ";
+					ganancia <- 0;
+					Escribir " Has ganado ", ganancia ,  " pesos $. Tu nuevo saldo en plata es de $ : " ,plata;
+				FinSi
+				
+				
+				Escribir "--------------------------------------------------------";
+				Escribir "";
+				
+				// Se da la opción al jugador de repetir o no el juego 
+				Escribir "Si deseas jugar otra vez coloca 0 de lo contario aprieta otro numero";
+				Leer deci;
+				
+				//Opción si el jugador desea o no repetir la partida
+				Si (deci = 0 )Entonces
+					apostarr(plata,apuesta,deci);
+					r <- 1;
+				Sino 
+					r <- 2;  //Se vuelve al Menú principal
+				FinSi
+				Borrar Pantalla;
+				
+			FinMientras
+		FinSi
+		
+		// El vector muestra en nombre de los mejores jugadores (Si la variable men en el menú  principal es = 2 )
+		Si men = 2 Entonces
+			Borrar Pantalla;
+			Escribir "********************************";
+			Escribir "       Mejores jugadores/as";
+		    Escribir "                           /\ /|";
+			Escribir "                          |||| |";
+			Escribir "                           \ | \";
+			Escribir "                       _ _ /  @ @";
+			Escribir "                    /    \   =>X<=";
+			Escribir "                  /|      |   /";
+			Escribir "                  \|     /__| |";
+			Escribir "                    \_____\ \__\";
+			Escribir "********************************";
+			x<-0;
+			Mientras v > x Hacer
+				Escribir j[x];
+				x<-x+1;
+			FinMientras
+			Esperar tecla;
+		FinSi
+		// Si el jugador elige la opcion 3 en el menú principal, la variable t es = a 2 para cerrar el ciclo
+		Si men = 3 Entonces 
+			t <- 2;
+		FinSi
+		
+	FinMientras
+	
+	//Cierre del Juego 
+	Escribir "**************************************************";
+	Escribir "  Gracias por jugar" ;
+	Escribir "                   __   __  ";
+	Escribir "                 ( s \Y/ s )";
+	Escribir "                  \_<>|<>_/";
+	Escribir "                   (_/|\_) ";
+	Escribir "";
+    Escribir "**************************************************";
+	
+	
+FinSubProceso
+
+
+
+
+
