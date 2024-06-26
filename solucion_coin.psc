@@ -30,7 +30,7 @@ Proceso MENU
 		Escribir '  3 - Juego de Dados';
 		Escribir '  4 - Acertijo';
 		Escribir '  5 - Adivinanzas de Animales';
-		Escribir '  6 - Opcion 6';
+		Escribir '  6 - JackPot';
 		Escribir '  7 - Opcion 7';
 		Escribir '  8 - Opcion 8';
 		Escribir '  9 - Salir';
@@ -52,7 +52,7 @@ Proceso MENU
 			5: 
 				adivinanzasDeAnimales(plata);
 			6: 
-				Escribir 'Funcion 6';
+				JackPot(plata);
 			7: 
 				Escribir 'Funcion 7';
 			8: 
@@ -2466,6 +2466,82 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 	
 FinSubProceso
 
+//#################################################################################//
+//##########               JACK POT                                    ############//
+//##########          MARIANELA SANHUEZA                               ############//
+//#################################################################################//
+
+SubProceso jackpot (credito Por Referencia)
+	tirada=1
+	Escribir "Bienvenido al JackPot 202"
+	Escribir "Tienes " credito, " creditos"
+	Escribir "¿Quiere ingresar dinero? S=1 N=2"
+	Leer desicion
+	segun desicion Hacer
+		1:
+		si desicion = 1
+			Entonces
+			Escribir "Ingrese monto"
+			leer creditoin
+		FinSi
+		credito = credito + creditoin
+		Escribir "Tienes ", credito, " créditos"
+    fin segun
+	si credito < 1
+		Escribir "No puede jugar"
+	SiNo
+		Repetir
+			creditos=credito/tirada
+			mostrar "ingrese su apuesta (max " creditos, " creditos, 0 para salir): " tirada, " creditos por tirada"
+			Repetir
+				jugadavalida = Falso
+				Leer apuesta
+				Si apuesta > credito
+					Entonces
+					Escribir "Apuesta inválida. Introduce una cantidad entre 1 y " creditos
+				SiNo
+					si apuesta>0 y apuesta<=creditos 
+						Entonces
+						credito=credito-apuesta
+						carrete1<-aleatorio (1,9)
+						carrete2<-aleatorio (1,9)
+						carrete3<-aleatorio(1,9)
+						Escribir "Los carretes muestran:", carrete1, "-", carrete2, "-", carrete3
+						si carrete1=carrete2 y carrete2=carrete3
+							Entonces
+							premio<-aleatorio(5,10)
+							credito= credito+premio
+							Escribir  "¡Felicidades! ¡Has ganado",premio,"creditos!. Tienes " credito " credito"
+						SiNo
+							Escribir  "Lo siento no has ganado esta vez. Tienes ",credito," créditos"
+						finsi
+						jugadavalida = Verdadero
+					finsi
+				FinSi
+			Hasta Que (apuesta > 0 y apuesta <= credito) o credito = 0 o apuesta = 0 o jugadavalida 
+			si credito > tirada
+				Entonces
+				escribir "¿Quiere volver a tirar? si=1 no=0"
+				Leer eleccion
+				Repetir
+					Si eleccion <> 1 Y eleccion <> 0
+						Entonces
+						Escribir "Eleccion incorrecta. Elija si=1 no=0"
+						Leer eleccion
+					Sino 
+						Si eleccion=1 
+							Entonces
+							escribir "Seguir jugando"
+						FinSi
+					FinSi
+				Hasta Que eleccion=1 o eleccion=0
+			SiNo
+				escribir "Gracias por jugar"
+			FinSi
+		Hasta Que credito <= 0 o apuesta = 0 o eleccion = 0
+	FinSi
+	Mostrar "¡Juego terminado Tienes! ", credito, " créditos"
+FinSubProceso
 
 
 
