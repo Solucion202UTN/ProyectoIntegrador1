@@ -2519,23 +2519,20 @@ FinSubProceso
 //##########          MARIANELA SANHUEZA                               ############//
 //#################################################################################//
 
-SubProceso jackpot (credito Por Referencia)
-	definir tirada Como Real;
+SubProceso jackpot (plata Por Referencia)
 	definir desicion  Como Real;
-	Definir creditoin Como Entero;
-	Definir apuesta, carrete1, carrete2, carrete3, elegir, premio  Como Entero;	
+	Definir apuesta, carrete1, carrete2, carrete3, elegir, premio, creditoin  Como Entero;	
 	Definir jugadavalida Como Logico;
 	desicion <- 1;
-	tirada <- 1;
 	elegir <- 0;
 	Escribir "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
 	Escribir "Bienvenido al JackPot 202";
 	Escribir "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
 	esperar 2 Segundos;
 	Limpiar Pantalla;
-	Escribir "Tienes ", credito, " creditos";
+	Escribir "Tienes ", plata, " plata";
 	Repetir
-		si credito < 1 
+		si plata < 1 
 			Entonces
 			Escribir "No tiene suficiente dinero para jugar";
 			Repetir
@@ -2547,34 +2544,35 @@ SubProceso jackpot (credito Por Referencia)
 					1:
 						Escribir "Ingrese monto";
 						leer creditoin;
-						credito <- (credito + creditoin);
-						Escribir "Tienes ", credito, " créditos";
+						plata <- (plata + creditoin);
+						Escribir "Tienes ", plata, " plata";
 						Esperar 2 Segundos;
 						Limpiar Pantalla;
 					2:
 						Escribir "Gracias por jugar, adiós";
 						Esperar 2 Segundos;
 						Limpiar Pantalla;
-						Escribir "Tienes ", credito, "créditos";
+						Escribir "Tienes ", plata, " plata";
+						Limpiar Pantalla;
 					De Otro Modo:
 						Escribir 'Eleccion no valida!';
 				fin segun
 			Hasta Que desicion = 1 o desicion = 2;
 		Fin si	
-		si credito > 0 
+		si plata > 0 
 			Entonces
 			Repetir
-				mostrar "ingrese su apuesta (max ", credito, " creditos, 0 para salir): ", tirada, " creditos por tirada";
+				mostrar "ingrese su apuesta (max ", plata, " plata, 0 para salir) ";
 				Repetir
 					jugadavalida <- Falso;
 					Leer apuesta;
-					Si apuesta > credito
+					Si apuesta > plata
 						Entonces
-						Escribir "Apuesta inválida. Introduce una cantidad entre 1 y ", credito;
+						Escribir "Apuesta inválida. Introduce una cantidad entre 1 y ", plata;
 					SiNo
-						si apuesta > 0 y apuesta <= credito 
+						si apuesta > 0 y apuesta <= plata 
 							Entonces
-							credito <- (credito - apuesta);
+							plata <- (plata - apuesta);
 							carrete1<-aleatorio (1,9);
 							carrete2<-aleatorio (1,9);
 							carrete3<-aleatorio(1,9);
@@ -2582,18 +2580,18 @@ SubProceso jackpot (credito Por Referencia)
 							si carrete1=carrete2 y carrete2=carrete3
 								Entonces
 								premio <- aleatorio (5,10);
-								credito <- (credito + premio);
-								Escribir  "¡Felicidades! ¡Has ganado ",premio," creditos!. Tienes ", credito, " credito";
+								plata <- (plata + premio);
+								Escribir  "¡Felicidades! ¡Has ganado ",premio," plata!. Te queda ", plata, " plata";
 							SiNo
-								Escribir  "Lo siento no has ganado esta vez. Tienes ",credito," créditos";
+								Escribir  "Lo siento no has ganado esta vez. Tienes ", plata," plata";
 							finsi
 							Esperar 3 Segundos;
 							Limpiar Pantalla;
 							jugadavalida <- verdadero;
 						finsi
 					FinSi
-				Hasta Que (apuesta > 0 y apuesta <= credito) o credito = 0 o apuesta = 0 o jugadavalida
-				si credito >= tirada
+				Hasta Que (apuesta > 0 y apuesta <= plata) o plata = 0 o apuesta = 0 o jugadavalida
+				si plata >= 1 
 					Entonces
 					escribir "¿Quiere volver a tirar? si=1 no=0";
 					Leer elegir;
@@ -2612,11 +2610,11 @@ SubProceso jackpot (credito Por Referencia)
 					Esperar 3 Segundos;
 					Limpiar Pantalla;
 				FinSi
-			Hasta Que credito <= 0 o apuesta = 0 o elegir = 0
+			Hasta Que plata <= 0 o apuesta = 0 o elegir = 0
 		FinSi
 	Hasta Que  desicion = 2 o apuesta = 0 o elegir = 0 
 	escribir "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
-	Escribir "¡Juego terminado Tienes! ", credito, " créditos";
+	Escribir "¡Juego terminado Tienes! ", plata, " plata";
 	escribir "Gracias por jugar";
 	escribir "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
 	Esperar 2 Segundos;
