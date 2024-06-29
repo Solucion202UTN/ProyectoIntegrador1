@@ -31,8 +31,6 @@ Proceso MENU
 		Escribir '  4 - Acertijo';
 		Escribir '  5 - Adivinanzas de Animales';
 		Escribir '  6 - JackPot';
-		Escribir '  7 - Opcion 7';
-		Escribir '  8 - Opcion 8';
 		Escribir '  9 - Salir';
 		Escribir ' ';
 		
@@ -1088,7 +1086,7 @@ SubProceso acertijo(plata Por Referencia)
 	//######################## ..............::::: INGRESO DE PLATA DEL USUARIO ::::::.............######################################
 	// Se pide al usuario que ingrese la plata: Se tomara un minimo de 100 valor de plata
 	Definir decision, plata_ingresada Como Real;
-	Si plata <= 100 Entonces
+	Si plata < 100 Entonces
 		Escribir "Tu saldo es: ", plata;
 		Escribir "Es inferior a 100";
 		Escribir "Debes ingresar al menos 100 de plata para la apuesta mínima";
@@ -1522,7 +1520,6 @@ SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 	acertijos_2[3] <- "El nivel del agua en un embalse es bajo, pero se duplica todos los días. Se necesitan 60 días para llenar el depósito."; 
 	acertijos_2[4] <- "¿Cuánto tiempo tarda el depósito en llenarse por la mitad?";
 	acertijos_2[5] <- "Antes de ayer, Juan tenía 15 años. El año que viene, tendrá 18. ¿Qué día es hoy?";
-	acertijos_2[6] <- "Si Martin le dice a Mariano: - Dame siete canicas y tendre el doble que vos. Pero Mariano le contesta: -Mejor dame vos siete canicas y asi tendremos la misma cantidad. ¿Cuántas canicas tiene cada uno?"; 
 	resultadoA <- 0;
 	resultadoB <- 0;
 	resultadoC <- 0;
@@ -1627,7 +1624,7 @@ SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 	Repetir
 		Escribir "";
 		Escribir "8. ", acertijos_2[3];
-		Escribir "   ", acertijos_2[4];
+		Escribir "   ";
 		Escribir "";
 		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
 		Escribir "";
@@ -1658,7 +1655,7 @@ SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 	Hasta Que opcion_elegida > 0 y opcion_elegida < 5
 	Repetir
 		Escribir "";
-		Escribir "9. ", acertijos_2[5];
+		Escribir "9. ", acertijos_2[4];
 		Escribir "";
 		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
 		Escribir "";
@@ -1689,7 +1686,7 @@ SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 	Hasta Que opcion_elegida > 0 y opcion_elegida < 5
 	Repetir
 		Escribir "";
-		Escribir "10. ", acertijos_2[6];
+		Escribir "10. ", acertijos_2[5];
 		Escribir "";
 		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
 		Escribir "";
@@ -1744,7 +1741,7 @@ SubProceso resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos
 			Escribir "";
 			Escribir "El saldo de plata que le queda es: ";
 			plata <- plata_ingresada + ganancia;
-			Escribir plata_ingresada, " de plata";
+			Escribir plata, " de plata";
 		SiNo
 			perdida <- opcion_apuesta * 0;
 			alerta <- "MAL JUGADO!!!";
