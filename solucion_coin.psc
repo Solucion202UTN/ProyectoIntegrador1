@@ -61,7 +61,7 @@ Proceso MENU
 					Esperar 2 Segundos;
 				FinSi
 				
-				Escribir "Adioss ¡Vuelva Pronto! ";
+				Escribir "Adioss Â¡Vuelva Pronto! ";
 				EligeSalir<-Verdadero;
 			De Otro Modo:
 				Escribir 'Eleccion no valida!';
@@ -99,7 +99,7 @@ SubProceso menuBlackJack( plata Por Referencia)
 	Escribir "|(\/)|  | /\ |  | /\ |  | &  |    ","|  |  /  _ \__  \   / __ | |  |/    \  / ___\            ";
 	Escribir "| \/ |  | \/ |  |(__)|  |&|& |    ","|  |_(  <_> ) __ \_/ /_/ | |  |   |  \/ /_/  >           ";
 	Escribir "|   A|  |   A|  | /\A|  | | A|    ","|____/\____(____  /\____ | |__|___|  /\___  / /\  /\  /\ ";
-	Escribir "`----`  `----´  `----´  `----´    ","                \/      \/         \//_____/  \/  \/  \/ ";
+	Escribir "`----`  `----Â´  `----Â´  `----Â´    ","                \/      \/         \//_____/  \/  \/  \/ ";
 	
 	Esperar 2 Segundos;
 	
@@ -536,7 +536,7 @@ SubProceso Ruleta (plata Por Referencia)
 	Definir color_apostado, paridad_apostada como Cadena;
 	Definir tipo_apuesta, color_salio como Cadena;
 	Definir resultado_apuesta como Cadena;
-	Definir ganancia, nuevo_plata como Real;
+	Definir ganancia, nuevo_plata, plata1 como Real;
 	Definir plata_apostado como Real;
 	Definir apuesta Como Logico;
 	
@@ -637,7 +637,8 @@ SubProceso Ruleta (plata Por Referencia)
 	// Inicializar variables
 	Escribir "";
 	Escribir "Para comenzar. Cuanto dinero quiere ingresar?: ";
-	Leer plata;
+	Leer plata1;
+	plata <- plata + plata1;
 	Limpiar Pantalla;
 	apuesta <- Verdadero;
 	
@@ -950,34 +951,34 @@ SubProceso JuegoDeDados(plata Por Referencia)
 	Escribir "";
 	Escribir "   - Debes realizar una apuesta antes de cada lanzamiento de dados.";
 	Escribir "";
-	Escribir "   - Se lanzarán dos dados después de realizar la apuesta.";
+	Escribir "   - Se lanzarÃ¡n dos dados despuÃ©s de realizar la apuesta.";
 	Escribir "";
     Escribir "   - Dependiendo del resultado obtenido, ocurren las siguientes situaciones:";
 	Escribir "";
 	Escribir "     * Si sacas un 7, recuperas tu apuesta.";
 	Escribir "";
-	Escribir "     * Si sacas un número igual o mayor a 8, ganas el doble de tu apuesta.";
+	Escribir "     * Si sacas un nÃºmero igual o mayor a 8, ganas el doble de tu apuesta.";
 	Escribir "";
-	Escribir "     * Si sacas un par de números iguales en los dados (doble), duplicas todo tu saldo.";
+	Escribir "     * Si sacas un par de nÃºmeros iguales en los dados (doble), duplicas todo tu saldo.";
 	Escribir "";
-	Escribir "     * Si la suma de los números en los dados es menor o igual a 6, pierdes tu apuesta.";
+	Escribir "     * Si la suma de los nÃºmeros en los dados es menor o igual a 6, pierdes tu apuesta.";
     Escribir "";
-	Escribir "   - El juego termina cuando decides dejar de jugar o cuando decides no ingresar más dinero.";
+	Escribir "   - El juego termina cuando decides dejar de jugar o cuando decides no ingresar mÃ¡s dinero.";
     Escribir "";
-    Escribir "¡Disfruta del juego y buena suerte!";
+    Escribir "Â¡Disfruta del juego y buena suerte!";
 	Escribir "";
 	Escribir "Presione una tecla para empezar a jugar";
 	Esperar Tecla; 
 	Limpiar Pantalla;
 	
 	Escribir "_____________________________________________________________________";
-	Escribir "*  *  *  *  *  *  *  *  *  *  ¡JUGUEMOS!  *  *  *  *  *  *  *  *  * ";
+	Escribir "*  *  *  *  *  *  *  *  *  *  Â¡JUGUEMOS!  *  *  *  *  *  *  *  *  * ";
 	Escribir "---------------------------------------------------------------------";
 	Escribir "";
 	Escribir "";
     Repetir
         Si plata <= 0 Entonces
-            Escribir "Tu saldo es $0 ¿Deseas ingresar dinero? (1 = Sí, 0 = No)";
+            Escribir "Tu saldo es $0 Â¿Deseas ingresar dinero? (1 = SÃ­, 0 = No)";
             Leer seguirJugando;
             Si seguirJugando = 1 Entonces
                 Escribir "Ingrese la cantidad de dinero a ingresar: ";
@@ -995,7 +996,7 @@ SubProceso JuegoDeDados(plata Por Referencia)
         Leer apuesta;
         
         Si apuesta > plata Entonces
-            Escribir "No tienes suficiente saldo para esa apuesta. Inténtalo de nuevo.";
+            Escribir "No tienes suficiente saldo para esa apuesta. IntÃ©ntalo de nuevo.";
         FinSi
         //Apostamos:
         plata <- plata - apuesta;
@@ -1011,15 +1012,15 @@ SubProceso JuegoDeDados(plata Por Referencia)
         
         // Verificamos el resultado
 		Si resultado = 7 Entonces
-			Escribir "¡Recuperas tu apuesta! El total de los dados es 7.";
+			Escribir "Â¡Recuperas tu apuesta! El total de los dados es 7.";
 			plata <- plata + apuesta;
 		Sino
 			Si resultado >= 8 Entonces
-				Escribir "¡Felicidades! Has ganado el doble de tu apuesta.";
+				Escribir "Â¡Felicidades! Has ganado el doble de tu apuesta.";
 				plata <- plata + (apuesta * 2);
 			Sino
 				Si dado1 = dado2 Entonces
-					Escribir "¡Dobles! Has duplicado todo tu saldo. ¡FELICIDADES!";
+					Escribir "Â¡Dobles! Has duplicado todo tu saldo. Â¡FELICIDADES!";
 					plata <- plata * 2;
 				Sino
 					Si resultado <= 6 Entonces
@@ -1033,7 +1034,7 @@ SubProceso JuegoDeDados(plata Por Referencia)
         Escribir "";
         Esperar 2 Segundos;
         Escribir "";
-        Escribir "¿Deseas seguir jugando? (1 = Sí, 0 = No)";
+        Escribir "Â¿Deseas seguir jugando? (1 = SÃ­, 0 = No)";
         Leer seguirJugando;
         
     Hasta Que seguirJugando = 0
@@ -1089,14 +1090,14 @@ SubProceso acertijo(plata Por Referencia)
 	Si plata < 100 Entonces
 		Escribir "Tu saldo es: ", plata;
 		Escribir "Es inferior a 100";
-		Escribir "Debes ingresar al menos 100 de plata para la apuesta mínima";
+		Escribir "Debes ingresar al menos 100 de plata para la apuesta mÃ­nima";
 		Escribir "";
 		Escribir "Si desea ingresar plata digite 1";
 		Escribir "Si desea salir del juego digite 2";
 		Leer decision;
 		Segun decision Hacer
 			1:
-				Escribir "Ingrese la cantidad de plata deseada (cantidad mínima para este juego: 100 de plata): ";
+				Escribir "Ingrese la cantidad de plata deseada (cantidad mÃ­nima para este juego: 100 de plata): ";
 				Leer plata_ingresada;
 				Si plata_ingresada < 100 Entonces 
 					Repetir
@@ -1115,14 +1116,14 @@ SubProceso acertijo(plata Por Referencia)
 	FinSi
 	Si plata > 100 Entonces
 		Escribir "Tu saldo es: ", plata;
-		Escribir "¿Desea ingresar más plata?";
+		Escribir "Â¿Desea ingresar mÃ¡s plata?";
 		Escribir "";
-		Escribir "Si desea ingresar más plata digite 1: ";
+		Escribir "Si desea ingresar mÃ¡s plata digite 1: ";
 		Escribir "Si desea salir del juego digite 2: ";
 		Leer decision;
 		Segun decision Hacer
 			1:
-				Escribir "Ingrese la cantidad de plata deseada (cantidad mínima para este juego: 100 de plata): ";
+				Escribir "Ingrese la cantidad de plata deseada (cantidad mÃ­nima para este juego: 100 de plata): ";
 				Leer plata_ingresada;
 				Si plata_ingresada < 100 Entonces 
 					Repetir
@@ -1148,12 +1149,12 @@ FinSubProceso
 SubProceso juegoAcertijo(plata_ingresada)
 	Definir opcion_apuesta Como Real;
 	opcion_apuesta <- apuesta_acertijo(plata_ingresada);
-	// Se llama al subproceso para iniciar los acertijos de la parte 1 de acertijos (seran 4 primeros acertijos más faciles que los 6 posteriores)
+	// Se llama al subproceso para iniciar los acertijos de la parte 1 de acertijos (seran 4 primeros acertijos mÃ¡s faciles que los 6 posteriores)
 	Definir parte1 Como Entero;
 	parte1 <- 0;
 	parte_1(parte1);
-	// En este subproceso se llevará a cabo el calculo del resultado de la parte uno para calcular cantidad de respuestas correctas
-	// Para calcular al final ganancias o pérdiadas
+	// En este subproceso se llevarÃ¡ a cabo el calculo del resultado de la parte uno para calcular cantidad de respuestas correctas
+	// Para calcular al final ganancias o pÃ©rdiadas
 	Definir resultado1, resultado2, resultado3, resultado4 Como Entero;
 	resultado1 <- acertijo_1(parte1);
 	resultado2 <- acertijo_2(parte1);
@@ -1164,8 +1165,8 @@ SubProceso juegoAcertijo(plata_ingresada)
 	parte2 <- 0;
 	parte_2(parte2);
 	// Se llama al subproceso para iniciar los acertijos de la parte 2 de acertijos (seran 6 de dificultad superior a los primeros 4)
-	// En este subproceso se llevará a cabo el calculo del resultado de la parte dos para calcular cantidad de respuestas correctas
-	// Para calcular al final ganancias o pérdiadas
+	// En este subproceso se llevarÃ¡ a cabo el calculo del resultado de la parte dos para calcular cantidad de respuestas correctas
+	// Para calcular al final ganancias o pÃ©rdiadas
 	Definir resultadoParteUno, resultadoParteDos, resultadoTotal Como Entero;
 	resultadoParteUno <- resultado1 + resultado2 + resultado3 + resultado4; 
 	resultadoParteDos <- acertijos_parte_2(parte2);
@@ -1200,19 +1201,19 @@ SubProceso opcion_apuesta <- apuesta_acertijo(plata_ingresada)
 	Escribir "En caso de no obtener las respuestas correctas indicadas para el 100% o el 30% de ganancias";
 	Escribir "Ud. perdera todo lo apostado";
 	Escribir "";
-	Escribir "El monto mínimo para apostar es 100 de plata";
+	Escribir "El monto mÃ­nimo para apostar es 100 de plata";
 	Escribir "";
 	Escribir Sin Saltar "Ingrese el monto que desea Apostar: ";
 	Leer opcion_apuesta;
 	Mientras opcion_apuesta > plata_ingresada o opcion_apuesta < 100 Hacer
-		Escribir "Monto ingresado inválido";
+		Escribir "Monto ingresado invÃ¡lido";
 		Escribir "";
-		Escribir Sin Saltar "Debe ingresar más de 100 de plata y menos del valor de plata ingresado con anterioridad: ";
+		Escribir Sin Saltar "Debe ingresar mÃ¡s de 100 de plata y menos del valor de plata ingresado con anterioridad: ";
 		Escribir "";
 		Leer opcion_apuesta;
 	FinMientras
 	Escribir "";
-	Escribir "Usted apostará ", opcion_apuesta, " de plata";
+	Escribir "Usted apostarÃ¡ ", opcion_apuesta, " de plata";
 	Escribir "";
 	Escribir "                                           PRESIONE UNA TECLA PARA CONTINUAR";
 	Esperar Tecla;
@@ -1265,7 +1266,7 @@ SubProceso resultado1 <- acertijo_1(parte1)
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
-	Escribir "                                 ATENCIÓN!!!";
+	Escribir "                                 ATENCIÃ“N!!!";
 	Escribir "DEBES ESCRIBIR LA PALABRA CORRECTA CON EXACTITUD, EN MAYUSCULAS Y SIN TILDES";
 	Escribir "";
 	Leer opcion;
@@ -1288,7 +1289,7 @@ SubProceso resultado1 <- respuesta1(opcion)
 			Escribir "INCORRECTO"; 
 		SiNo
 			Escribir "";
-			Escribir "¡¡¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayúsculas y sin tilde la palabra correcta.";
+			Escribir "Â¡Â¡Â¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayÃºsculas y sin tilde la palabra correcta.";
 		FinSi
 	FinSi
 FinSubProceso
@@ -1301,7 +1302,7 @@ SubProceso resultado2 <- acertijo_2(parte1)
 	Escribir "";
 	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
 	Escribir "";
-	Escribir "2. Choco me dice la gente, late mi corazón. El que no sepa mi nombre, es un gran tontorrón.";
+	Escribir "2. Choco me dice la gente, late mi corazÃ³n. El que no sepa mi nombre, es un gran tontorrÃ³n.";
 	Escribir "";
 	a <- azar(3);
 	Segun a Hacer
@@ -1325,7 +1326,7 @@ SubProceso resultado2 <- acertijo_2(parte1)
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
-	Escribir "                                 ATENCIÓN!!!";
+	Escribir "                                 ATENCIÃ“N!!!";
 	Escribir "DEBES ESCRIBIR LA PALABRA CORRECTA CON EXACTITUD, EN MAYUSCULAS Y SIN TILDES";
 	Escribir "";
 	Leer opcion;
@@ -1348,7 +1349,7 @@ SubProceso resultado2 <- respuesta2(opcion)
 			Escribir "INCORRECTO"; 
 		SiNo
 			Escribir "";
-			Escribir "¡¡¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayúsculas y sin tilde la palabra correcta.";
+			Escribir "Â¡Â¡Â¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayÃºsculas y sin tilde la palabra correcta.";
 		FinSi
 	FinSi
 FinSubProceso
@@ -1361,7 +1362,7 @@ SubProceso resultado3 <- acertijo_3(parte1)
 	Escribir "";
 	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
 	Escribir "";
-	Escribir "3. ¿Qué es lo que no hace preguntas, pero necesita ser contestado?";
+	Escribir "3. Â¿QuÃ© es lo que no hace preguntas, pero necesita ser contestado?";
 	Escribir "";
 	a <- azar(3);
 	Segun a Hacer
@@ -1385,7 +1386,7 @@ SubProceso resultado3 <- acertijo_3(parte1)
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
-	Escribir "                                 ATENCIÓN!!!";
+	Escribir "                                 ATENCIÃ“N!!!";
 	Escribir "DEBES ESCRIBIR LA PALABRA CORRECTA CON EXACTITUD, EN MAYUSCULAS Y SIN TILDES";
 	Escribir "";
 	Leer opcion;
@@ -1408,7 +1409,7 @@ SubProceso resultado3 <- respuesta3(opcion)
 			Escribir "INCORRECTO"; 
 		SiNo
 			Escribir "";
-			Escribir "¡¡¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayúsculas y sin tilde la palabra correcta.";
+			Escribir "Â¡Â¡Â¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayÃºsculas y sin tilde la palabra correcta.";
 		FinSi
 	FinSi
 FinSubProceso
@@ -1421,7 +1422,7 @@ SubProceso resultado4 <- acertijo_4(parte1)
 	Escribir "";
 	Escribir "TENES 15 SEGUNDOS PARA MEMORIZAR LAS RESPUESTAS Y LUEGO ESCRIBIR LA CORRECTA";
 	Escribir "";
-	Escribir "4. Un paciente en un hospital recibe un visitante. Una enfermera le pregunta quién era el visitante."; 
+	Escribir "4. Un paciente en un hospital recibe un visitante. Una enfermera le pregunta quiÃ©n era el visitante."; 
 	Escribir "   El paciente le responde: - No tengo hermanos ni hermanas, pero el padre de ese hombre es el hijo de mi padre.";
 	Escribir "";
 	a <- azar(3);
@@ -1446,7 +1447,7 @@ SubProceso resultado4 <- acertijo_4(parte1)
 	FinMientras
 	Borrar Pantalla;
 	Escribir "";
-	Escribir "                                 ATENCIÓN!!!";
+	Escribir "                                 ATENCIÃ“N!!!";
 	Escribir "DEBES ESCRIBIR LA PALABRA CORRECTA CON EXACTITUD, EN MAYUSCULAS Y SIN TILDES";
 	Escribir "";
 	Leer opcion;
@@ -1469,7 +1470,7 @@ SubProceso resultado4 <- respuesta4(opcion)
 			Escribir "INCORRECTO"; 
 		SiNo
 			Escribir "";
-			Escribir "¡¡¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayúsculas y sin tilde la palabra correcta.";
+			Escribir "Â¡Â¡Â¡INCORRECTO!!! Recuerde que debe escribir con exactitud, en mayÃºsculas y sin tilde la palabra correcta.";
 		FinSi
 	FinSi
 FinSubProceso
@@ -1485,7 +1486,7 @@ SubProceso parte_2(parte2)
 		Esperar 1 Segundo;
 		Escribir "";
 		Escribir "                        |********************************************************************|";
-		Escribir "                        |***  A CONTINUACIÓN LOS PRÓXIMOS 6 ACERTIJOS SE PONEN DIFÍCILES  ***|"; 
+		Escribir "                        |***  A CONTINUACIÃ“N LOS PRÃ“XIMOS 6 ACERTIJOS SE PONEN DIFÃCILES  ***|"; 
 		Escribir "                        |********************************************************************|";
 		Escribir "";
 		Escribir "";
@@ -1514,12 +1515,12 @@ SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 	Definir resultadoParteDos Como Entero; 
 	Definir acertijos_2 Como Caracter;
 	Dimension acertijos_2[7];
-	acertijos_2[0] <- "Completa esta secuencia: 16, 06, 68, 88, X, 98. ¿Qué número va en el lugar de la X?";
-	acertijos_2[1] <- "Una persona cazó 10 arañas y escarabajos.";
-	acertijos_2[2] <- "¿Cuál es la probabilidad de obtener un 6 o un 7 al lanzar un par de dados?";
-	acertijos_2[3] <- "El nivel del agua en un embalse es bajo, pero se duplica todos los días. Se necesitan 60 días para llenar el depósito."; 
-	acertijos_2[4] <- "¿Cuánto tiempo tarda el depósito en llenarse por la mitad?";
-	acertijos_2[5] <- "Antes de ayer, Juan tenía 15 años. El año que viene, tendrá 18. ¿Qué día es hoy?";
+	acertijos_2[0] <- "Completa esta secuencia: 16, 06, 68, 88, X, 98. Â¿QuÃ© nÃºmero va en el lugar de la X?";
+	acertijos_2[1] <- "Una persona cazÃ³ 10 araÃ±as y escarabajos.";
+	acertijos_2[2] <- "Â¿CuÃ¡l es la probabilidad de obtener un 6 o un 7 al lanzar un par de dados?";
+	acertijos_2[3] <- "El nivel del agua en un embalse es bajo, pero se duplica todos los dÃ­as. Se necesitan 60 dÃ­as para llenar el depÃ³sito."; 
+	acertijos_2[4] <- "Â¿CuÃ¡nto tiempo tarda el depÃ³sito en llenarse por la mitad?";
+	acertijos_2[5] <- "Antes de ayer, Juan tenÃ­a 15 aÃ±os. El aÃ±o que viene, tendrÃ¡ 18. Â¿QuÃ© dÃ­a es hoy?";
 	resultadoA <- 0;
 	resultadoB <- 0;
 	resultadoC <- 0;
@@ -1561,14 +1562,14 @@ SubProceso resultadoParteDos <- acertijos_parte_2(parte2)
 		Escribir "";
 		Escribir "6. ", acertijos_2[1];
 		Escribir "   Estos conforman un total de 66 patas.";
-		Escribir "   ¿Cuántos animales tiene de cada una de estas especies?";
+		Escribir "   Â¿CuÃ¡ntos animales tiene de cada una de estas especies?";
 		Escribir "";
 		Escribir "DIGITA EL NUMERO DE LA OPCION QUE ELIJAS";
 		Escribir "";
-		Escribir "1. 6 ARAÑAS Y 4 ESCARABAJOS";
-		Escribir "2. 2 ARAÑAS Y 8 ESCARABAJOS";
-		Escribir "3. 3 ARAÑAS Y 7 ESCARABAJOS";
-		Escribir "4. 9 ARAÑAS Y 1 ESCARABAJOS";
+		Escribir "1. 6 ARAÃ‘AS Y 4 ESCARABAJOS";
+		Escribir "2. 2 ARAÃ‘AS Y 8 ESCARABAJOS";
+		Escribir "3. 3 ARAÃ‘AS Y 7 ESCARABAJOS";
+		Escribir "4. 9 ARAÃ‘AS Y 1 ESCARABAJOS";
 		Leer opcion_elegida;
 		Esperar 1 Segundo;
 		Si opcion_elegida = 3 Entonces
@@ -1745,7 +1746,7 @@ SubProceso resultadoTotal <- resultadoFinal(resultadoParteUno, resultadoParteDos
 		SiNo
 			perdida <- opcion_apuesta * 0;
 			alerta <- "MAL JUGADO!!!";
-			mensajeFinal <- "No has resuelto la cantidad mínima de acertijos para obtener ganancias";
+			mensajeFinal <- "No has resuelto la cantidad mÃ­nima de acertijos para obtener ganancias";
 			Escribir Concatenar(alerta,mensajeFinal);
 			Escribir "Has perdido los ", opcion_apuesta, " de plata apostados";
 			Escribir "";
@@ -1767,11 +1768,11 @@ SubProceso apostarr(plata por Referencia , apuesta Por Referencia, deci Por Refe
 	FinSi
 	
 	Escribir "Tienes un saldo de $: ", plata, " plata.";
-	Escribir "¿Cuánto deseas apostar?";
+	Escribir "Â¿CuÃ¡nto deseas apostar?";
 	Leer apuesta;
 	Mientras apuesta > plata Hacer
-		Escribir "No tienes suficiente plata  para esa apuesta. Inténtalo de nuevo.";
-		Escribir "¿Cuánto deseas apostar?";
+		Escribir "No tienes suficiente plata  para esa apuesta. IntÃ©ntalo de nuevo.";
+		Escribir "Â¿CuÃ¡nto deseas apostar?";
 		Leer apuesta;
 	FinMientras
 	plata <- plata - apuesta;
@@ -1787,14 +1788,14 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 	Dimension j[20];
 	v <- 0;
 	t <- 1;
-	// Bucle repetitivo Mientras t=1 (Para entrar al menú de opciones)
+	// Bucle repetitivo Mientras t=1 (Para entrar al menÃº de opciones)
 	Mientras t = 1 hacer
 		Borrar Pantalla;
 		Escribir "*************Juego de Adivinanzas: Animales *************";
 		Escribir " ";
 	    Escribir "                    /\_/\"  ;                                                            
 		Escribir "               ____/ o o \";
-		Escribir "              /~____ =ø= /"  ;                         
+		Escribir "              /~____ =Ã¸= /"  ;                         
 		Escribir "             (______)__m_m)";
 		Escribir " ";
 		Escribir "                  _" ;
@@ -1808,7 +1809,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 		Escribir "            \/";
 		Escribir " ";
 		Escribir "               __";
-		Escribir "             >(° )";
+		Escribir "             >(Â° )";
 		Escribir "               )/" ;
 		Escribir "              /(____/\";
 		Escribir "             /        )";
@@ -1816,7 +1817,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 		Escribir "              `---Y-"; 
 		Escribir " ";
 		Escribir  "               _";
-		Escribir  "              C°) , ,";
+		Escribir  "              CÂ°) , ,";
 		Escribir  "              ( \/^U^\";
 		Escribir  "               (      \";
 		Escribir  "                 i(__.i\*";
@@ -1824,7 +1825,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 		Escribir  "               o u  o   o";
 		Escribir " ";
 		Escribir "*************Juego de Adivinanzas: Animales *************";
-		Escribir "Elegir una opción:";
+		Escribir "Elegir una opciÃ³n:";
 		Escribir "1. Partida Nueva";
 		Escribir "2. Mejores Jugadores";
 		Escribir "3. Salir";
@@ -1836,23 +1837,23 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 		Escribir "             ^^   ^^";
 		// variable men (Lee  la opcion se escoge: 1 , 2 y 3 ) 
 		Leer men;  
-		// si la variable men es = 1 (Se inicia una partida nueva) y se llama al SubProceso apostar para la inserción de plata
+		// si la variable men es = 1 (Se inicia una partida nueva) y se llama al SubProceso apostar para la inserciÃ³n de plata
 		Si (men = 1)Entonces
 			apostarr(plata,apuesta,deci);
 			Borrar Pantalla;
 			// ciclo Mientras  para Repetir las partidas del juego 
 			r <- 1;
 			Mientras r = 1 Hacer
-				//Inicialización de variables 
+				//InicializaciÃ³n de variables 
 				corr <-0;
 				inc <- 0;
 				Borrar Pantalla;
 				Escribir "---Primera Pregunta---";
-				//Se elige al azar entre uno y cinco  para la elección de preguntas
+				//Se elige al azar entre uno y cinco  para la elecciÃ³n de preguntas
 				resp <- azar(5)+1;
 				Si (resp = 1)Entonces
-					Escribir " Con bigotes sensibles y ágil al saltar, caza ratones sin parar.  ";
-					Escribir "Qué animal es:";
+					Escribir " Con bigotes sensibles y Ã¡gil al saltar, caza ratones sin parar.  ";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Gato";
 					Escribir "2. Conejo";
 					Escribir "3. Caballo";
@@ -1868,8 +1869,8 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				FinSi
 				
 				Si (resp = 2)Entonces
-					Escribir "Come Zanahorias con gran afición, y en el campo salta con emoción";
-					Escribir "Qué animal es:";
+					Escribir "Come Zanahorias con gran aficiÃ³n, y en el campo salta con emociÃ³n";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Gato";
 					Escribir "2. Caballo";
 					Escribir "3. Perro";
@@ -1887,7 +1888,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 3)Entonces
 					Escribir "Con crin y cola al viento va, corriendo en la pradera sin parar";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Caballo";
 					Escribir "2. Gato";
 					Escribir "3. Conejo";
@@ -1904,7 +1905,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 4)Entonces
 					Escribir "Con olfato agudo y lealtad sin fin siempre es amigo, nunca es ruin.";
-					Escribir  "Qué animal es:";
+					Escribir  "QuÃ© animal es:";
 					Escribir "1. Gato";
 					Escribir "2. Perro";
 					Escribir "3. Caballo";
@@ -1921,7 +1922,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 5)Entonces
 					Escribir "En el desierto puede andar, con joroba para almacenar.";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Gato";
 					Escribir "2. Conejo";
 					Escribir "3. Camello";
@@ -1948,12 +1949,12 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 1)Entonces
 					Escribir "En el mar nada con gran destreza, su sonrisa en su mayor belleza";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Delfin";
 					Escribir "2. Vaca";
 					Escribir "3. Oso";
 					Escribir "4. Rana";
-					Escribir "5. Murciélago";
+					Escribir "5. MurciÃ©lago";
 					leer res;
 					Si (res = 1)Entonces
 						corr <- corr +1;
@@ -1964,13 +1965,13 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				FinSi
 				
 				Si (resp = 2)Entonces
-					Escribir "En el campo pasta con gran placer, nos da leche para nuestro café ";
-					Escribir "Qué animal es:";
-					Escribir "1. Delfín";
+					Escribir "En el campo pasta con gran placer, nos da leche para nuestro cafÃ© ";
+					Escribir "QuÃ© animal es:";
+					Escribir "1. DelfÃ­n";
 					Escribir "2. Oso";
 					Escribir "3. Vaca";
 					Escribir "4. Rana";
-					Escribir "5. Murciélago";
+					Escribir "5. MurciÃ©lago";
 					leer res;
 					Si (res = 3)Entonces
 						corr <- corr +1;
@@ -1982,12 +1983,12 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 3)Entonces
 					Escribir "En el bosque vive con gran tranquilidad, con su pelaje espeso y su gran bondad";
-					Escribir "Qué animal es:";
-					Escribir "1. Delfín";
+					Escribir "QuÃ© animal es:";
+					Escribir "1. DelfÃ­n";
 					Escribir "2. Oso";
 					Escribir "3. Vaca";
 					Escribir "4. Rana";
-					Escribir "5. Murciélago";
+					Escribir "5. MurciÃ©lago";
 					leer res;
 					Si (res = 2)Entonces
 						corr <- corr +1;
@@ -1999,12 +2000,12 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 4)Entonces
 					Escribir "En el estanque salta con gran agilidad, con su canto anuncia la llegada de la humedad";
-					Escribir "Qué animal es:";
-					Escribir "1. Delfín";
+					Escribir "QuÃ© animal es:";
+					Escribir "1. DelfÃ­n";
 					Escribir "2. Vaca";
 					Escribir "3. Oso";
 					Escribir "4. Rana";
-					Escribir "5. Murciélago";
+					Escribir "5. MurciÃ©lago";
 					leer res;
 					Si (res = 4)Entonces
 						corr <- corr +1;
@@ -2016,9 +2017,9 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 5)Entonces
 					Escribir "En la noche vuela sin hacer ruido, con sus alas oscuras en el cielo tendido";
-					Escribir "Qué animal es:";
-					Escribir "1. Delfín";
-					Escribir "2. Murciélago";
+					Escribir "QuÃ© animal es:";
+					Escribir "1. DelfÃ­n";
+					Escribir "2. MurciÃ©lago";
 					Escribir "3. Rana";
 					Escribir "4. Vaca";
 					Escribir "5. Oso";
@@ -2042,10 +2043,10 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				
 				Si (resp = 1)Entonces
-					Escribir "En el desierto se arrastra con sigilo y gran temor, con su aguijón en la cola, veneno lleva en su interior";
-					Escribir " Qué animal es:";
-					Escribir "1. Escorpión";
-					Escribir "2. Búfalo";
+					Escribir "En el desierto se arrastra con sigilo y gran temor, con su aguijÃ³n en la cola, veneno lleva en su interior";
+					Escribir " QuÃ© animal es:";
+					Escribir "1. EscorpiÃ³n";
+					Escribir "2. BÃºfalo";
 					Escribir "3. Peces";
 					Escribir "4. Pato";
 					Escribir "5. Gorila";
@@ -2060,12 +2061,12 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 2)Entonces
 					Escribir "En la sabana africana puede verse pastar, con sus cuernos grandes y su pelaje alomar";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Peces";
 					Escribir "2. Gorila";
 					Escribir "3. Pato";
-					Escribir "4.  Búfalo";
-					Escribir "5. Escorpión";
+					Escribir "4.  BÃºfalo";
+					Escribir "5. EscorpiÃ³n";
 					leer res;
 					Si (res = 4)Entonces
 						corr <- corr +1;
@@ -2076,13 +2077,13 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				FinSi
 				
 				Si (resp = 3)Entonces
-					Escribir "En el agua nadan con gran destreza, en cardúmenes forman gran belleza.";
-					Escribir "Qué animal es:";
-					Escribir "1. Búfalo";
+					Escribir "En el agua nadan con gran destreza, en cardÃºmenes forman gran belleza.";
+					Escribir "QuÃ© animal es:";
+					Escribir "1. BÃºfalo";
 					Escribir "2. Gorila";
 					Escribir "3. Pato";
 					Escribir "4. Peces";
-					Escribir "5. Escorpión";
+					Escribir "5. EscorpiÃ³n";
 					leer res;
 					Si (res = 4)Entonces
 						corr <- corr +1;
@@ -2094,12 +2095,12 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 4)Entonces
 					Escribir "En la selva vive con gran majestuosidad, con su fuerza y su mirada llena de bondad.";
-					Escribir "Qué animal es:";
-					Escribir "1. Búfalo";
+					Escribir "QuÃ© animal es:";
+					Escribir "1. BÃºfalo";
 					Escribir "2. Peces";
 					Escribir "3. Gorila";
 					Escribir "4. Pato";
-					Escribir "5. Escorpión";
+					Escribir "5. EscorpiÃ³n";
 					leer res;
 					Si (res = 3)Entonces
 						corr <- corr +1;
@@ -2110,13 +2111,13 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				FinSi
 				
 				Si (resp = 5)Entonces
-					Escribir "En lagos y ríos nada con gran habilidad, con su pico en forma de cuchara busca su sustento en la humendad";
-					Escribir "Qué animal es:";
+					Escribir "En lagos y rÃ­os nada con gran habilidad, con su pico en forma de cuchara busca su sustento en la humendad";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Pato";
 					Escribir "2. Peces";
-					Escribir "3. Búfalo";
+					Escribir "3. BÃºfalo";
 					Escribir "4. Gorila";
-					Escribir "5. Escorpión";
+					Escribir "5. EscorpiÃ³n";
 					leer res;
 					Si (res = 1)Entonces
 						corr <- corr +1;
@@ -2135,7 +2136,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 1)Entonces
 					Escribir "En la selva o en la sabana puede verse andar, con su trompa larga y sus colmillos alomar";
-					Escribir " Qué animal es:";
+					Escribir " QuÃ© animal es:";
 					Escribir "1. Elefante";
 					Escribir "2. Ameba";
 					Escribir "3. Castor";
@@ -2152,7 +2153,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 2)Entonces
 					Escribir "En el microscopio se puede observar, sin forma definifa, es dificil de atrapar";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Elefante";
 					Escribir "2. Ameba";
 					Escribir "3. Castor";
@@ -2168,8 +2169,8 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				FinSi
 				
 				Si (resp = 3)Entonces
-					Escribir "En el río construye su hogar, con troncos y ramas, sin descansar";
-					Escribir "Qué animal es:";
+					Escribir "En el rÃ­o construye su hogar, con troncos y ramas, sin descansar";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Elefante";
 					Escribir "2. Castor";
 					Escribir "3. Jirafa";
@@ -2185,8 +2186,8 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				FinSi
 				
 				Si (resp = 4)Entonces
-					Escribir "En la sabana su cuello destaca, alcanzando las hojas más altas con gracia";
-					Escribir "Qué animal es:";
+					Escribir "En la sabana su cuello destaca, alcanzando las hojas mÃ¡s altas con gracia";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Elefante";
 					Escribir "2. Ameba";
 					Escribir "3. Castor";
@@ -2203,7 +2204,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 5)Entonces
 					Escribir "En la sabana africana puede encontrarse, con su cuerno en la nariz para protegerse";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Elefante";
 					Escribir "2. Rinoceronte";
 					Escribir "3. Ameba";
@@ -2225,10 +2226,10 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				resp <- azar(5)+1;
 				
 				Si (resp = 1)Entonces
-					Escribir "En el bosque aúlla en la noche, cazador astuto, de mirada derroche";
-					Escribir "Qué animal es:";
-					Escribir "1. Araña";
-					Escribir "2. Ratón";
+					Escribir "En el bosque aÃºlla en la noche, cazador astuto, de mirada derroche";
+					Escribir "QuÃ© animal es:";
+					Escribir "1. AraÃ±a";
+					Escribir "2. RatÃ³n";
 					Escribir "3. Lobo";
 					Escribir "4. Mariposa";
 					Escribir "5. Ciervo";
@@ -2243,10 +2244,10 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 2)Entonces
 					Escribir "Teje su tela con gran destreza, en rincones oscuros atrapa su presa.";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Lobo";
-					Escribir "2. Ratón";
-					Escribir "3. Araña";
+					Escribir "2. RatÃ³n";
+					Escribir "3. AraÃ±a";
 					Escribir "4. Mariposa";
 					Escribir "5. Ciervo";
 					leer res;
@@ -2260,11 +2261,11 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 3)Entonces
 					Escribir "En la casa o en el campo puede estar, buscando comida sin descanzar";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Lobo";
-					Escribir "2. Araña";
+					Escribir "2. AraÃ±a";
 					Escribir "3. Ciervo";
-					Escribir "4. Ratón";
+					Escribir "4. RatÃ³n";
 					Escribir "5. Mariposa";
 					leer res;
 					Si (res = 4)Entonces
@@ -2277,10 +2278,10 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				
 				Si (resp = 4)Entonces
 					Escribir "En el bosque majestuoso puede verse, con sus astas grandes y su mirada alegre";
-					Escribir "Qué animal es:";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Lobo";
-					Escribir "2. Araña";
-					Escribir "3. Ratón";
+					Escribir "2. AraÃ±a";
+					Escribir "3. RatÃ³n";
 					Escribir "4. Ciervo";
 					Escribir "5. Mariposa";
 					leer res;
@@ -2293,13 +2294,13 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				FinSi
 				
 				Si (resp = 5)Entonces
-					Escribir "De colores brillantes y alas de papel, revolotea en el jardín con gran sencillez.";
-					Escribir "Qué animal es:";
+					Escribir "De colores brillantes y alas de papel, revolotea en el jardÃ­n con gran sencillez.";
+					Escribir "QuÃ© animal es:";
 					Escribir "1. Mariposa";
 					Escribir "2. Lobo";
-					Escribir "3. Ratón";
+					Escribir "3. RatÃ³n";
 					Escribir "4. Ciervo";
-					Escribir "5. Araña"; 
+					Escribir "5. AraÃ±a"; 
 					leer res;
 					Si (res = 1)Entonces
 						corr <- corr +1;
@@ -2327,7 +2328,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				// Devuelve cantidad de respuestas correctas, incorrectas y el porcentaje sacado
 				Escribir "********** Resultados **********";
 				Escribir "       {_}";
-				Escribir "      °-=\ ";
+				Escribir "      Â°-=\ ";
 				Escribir "         \\____(";
 				Escribir "        _|/---\\_";
 				Escribir "        \        \";
@@ -2337,7 +2338,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				Escribir "Respondiste correctamente el ",porc, "% de las preguntas";
 				// Se muestra cuando el porcentaje sacado es de 100%
 				Si (porc = 100)Entonces
-					Escribir "Tu resultado es Insuperable ¡FELICITACIONES!";
+					Escribir "Tu resultado es Insuperable Â¡FELICITACIONES!";
 					
 					
 					Escribir  "                    __     __";
@@ -2352,7 +2353,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 					ganancia <- apuesta * 5;
 					plata <- plata + ganancia + apuesta;
 					Escribir " Has ganado ", ganancia , " pesos $. Tu nuevo saldo en plata es de: $ ", plata;
-					//Se guarda en el vector el nombre del jugador que acertó todas las respuestas
+					//Se guarda en el vector el nombre del jugador que acertÃ³ todas las respuestas
 					Escribir "";
 					Escribir "***Digita tu nombre***";
 					leer nom;
@@ -2375,7 +2376,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				FinSi
 				//Se muestra cuando el procentaje es entre 80% y 99%
 				Si (porc >=80)y(porc<100)Entonces
-					Escribir "Tu resultado es Sobresaliente  ¡BIEN HECHO!";
+					Escribir "Tu resultado es Sobresaliente  Â¡BIEN HECHO!";
 					
 					Escribir "          @..@";
 					Escribir "         (----)";
@@ -2444,7 +2445,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 					
 					
 					Escribir "        \    /\";
-					Escribir "         )  ( °)";
+					Escribir "         )  ( Â°)";
 					Escribir "        (  /  )";
 					Escribir "         \(__)|";
 					
@@ -2457,23 +2458,23 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 				Escribir "--------------------------------------------------------";
 				Escribir "";
 				
-				// Se da la opción al jugador de repetir o no el juego 
+				// Se da la opciÃ³n al jugador de repetir o no el juego 
 				Escribir "Si deseas jugar otra vez coloca 0 de lo contario aprieta otro numero";
 				Leer deci;
 				
-				//Opción si el jugador desea o no repetir la partida
+				//OpciÃ³n si el jugador desea o no repetir la partida
 				Si (deci = 0 )Entonces
 					apostarr(plata,apuesta,deci);
 					r <- 1;
 				Sino 
-					r <- 2;  //Se vuelve al Menú principal
+					r <- 2;  //Se vuelve al MenÃº principal
 				FinSi
 				Borrar Pantalla;
 				
 			FinMientras
 		FinSi
 		
-		// El vector muestra en nombre de los mejores jugadores (Si la variable men en el menú  principal es = 2 )
+		// El vector muestra en nombre de los mejores jugadores (Si la variable men en el menÃº  principal es = 2 )
 		Si men = 2 Entonces
 			Borrar Pantalla;
 			Escribir "********************************";
@@ -2494,7 +2495,7 @@ SubProceso adivinanzasDeAnimales(plata Por Referencia)
 			FinMientras
 			Esperar tecla;
 		FinSi
-		// Si el jugador elige la opcion 3 en el menú principal, la variable t es = a 2 para cerrar el ciclo
+		// Si el jugador elige la opcion 3 en el menÃº principal, la variable t es = a 2 para cerrar el ciclo
 		Si men = 3 Entonces 
 			t <- 2;
 		FinSi
@@ -2525,9 +2526,9 @@ SubProceso jackpot (plata Por Referencia)
 	Definir jugadavalida Como Logico;
 	desicion <- 1;
 	elegir <- 0;
-	Escribir "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
+	Escribir "Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°";
 	Escribir "Bienvenido al JackPot 202";
-	Escribir "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
+	Escribir "Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°";
 	esperar 2 Segundos;
 	Limpiar Pantalla;
 	Escribir "Tienes ", plata, " plata";
@@ -2536,7 +2537,7 @@ SubProceso jackpot (plata Por Referencia)
 			Entonces
 			Escribir "No tiene suficiente dinero para jugar";
 			Repetir
-				Escribir "¿Quiere ingresar dinero? S=1 N=2";
+				Escribir "Â¿Quiere ingresar dinero? S=1 N=2";
 				Leer desicion;
 				Esperar 1 Segundos;
 				Limpiar Pantalla;
@@ -2549,7 +2550,7 @@ SubProceso jackpot (plata Por Referencia)
 						Esperar 2 Segundos;
 						Limpiar Pantalla;
 					2:
-						Escribir "Gracias por jugar, adiós";
+						Escribir "Gracias por jugar, adiÃ³s";
 						Esperar 2 Segundos;
 						Limpiar Pantalla;
 						Escribir "Tienes ", plata, " plata";
@@ -2568,7 +2569,7 @@ SubProceso jackpot (plata Por Referencia)
 					Leer apuesta;
 					Si apuesta > plata
 						Entonces
-						Escribir "Apuesta inválida. Introduce una cantidad entre 1 y ", plata;
+						Escribir "Apuesta invÃ¡lida. Introduce una cantidad entre 1 y ", plata;
 					SiNo
 						si apuesta > 0 y apuesta <= plata 
 							Entonces
@@ -2581,7 +2582,7 @@ SubProceso jackpot (plata Por Referencia)
 								Entonces
 								premio <- aleatorio (5,10);
 								plata <- (plata + premio);
-								Escribir  "¡Felicidades! ¡Has ganado ",premio," plata!. Te queda ", plata, " plata";
+								Escribir  "Â¡Felicidades! Â¡Has ganado ",premio," plata!. Te queda ", plata, " plata";
 							SiNo
 								Escribir  "Lo siento no has ganado esta vez. Tienes ", plata," plata";
 							finsi
@@ -2593,7 +2594,7 @@ SubProceso jackpot (plata Por Referencia)
 				Hasta Que (apuesta > 0 y apuesta <= plata) o plata = 0 o apuesta = 0 o jugadavalida
 				si plata >= 1 
 					Entonces
-					escribir "¿Quiere volver a tirar? si=1 no=0";
+					escribir "Â¿Quiere volver a tirar? si=1 no=0";
 					Leer elegir;
 					Repetir
 						Si elegir <> 1 Y elegir <> 0
@@ -2613,10 +2614,10 @@ SubProceso jackpot (plata Por Referencia)
 			Hasta Que plata <= 0 o apuesta = 0 o elegir = 0
 		FinSi
 	Hasta Que  desicion = 2 o apuesta = 0 o elegir = 0 
-	escribir "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
-	Escribir "¡Juego terminado Tienes! ", plata, " plata";
+	escribir "Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°";
+	Escribir "Â¡Juego terminado Tienes! ", plata, " plata";
 	escribir "Gracias por jugar";
-	escribir "°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
+	escribir "Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°Â°";
 	Esperar 2 Segundos;
 	Limpiar Pantalla;
 
